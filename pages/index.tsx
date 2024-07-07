@@ -4,6 +4,7 @@ import Hero from "@/components/Home/Hero";
 import TopCountryRow from "@/components/Home/TopCountryRow";
 import Banner from "@/components/Home/Banner";
 import About from "@/components/Home/About";
+import SearchContainer from "@/components/SearchContiner/SearchContainer";
 
 
 export default function Home(props: { title: string }) {
@@ -12,10 +13,8 @@ export default function Home(props: { title: string }) {
     <ClientContainer>
       <main
       >
-        <h1>
-          {props.title}
-        </h1>
         <Hero />
+        <SearchContainer />
         <TopCountryRow />
         <Banner />
         <About />

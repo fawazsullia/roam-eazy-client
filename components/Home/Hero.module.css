@@ -1,0 +1,11 @@
+.heroContainer {
+    width: 100%;
+    height: 80vh;
+    background-image: url('../../public/hero-image.jpeg');
+    background-position: center;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}

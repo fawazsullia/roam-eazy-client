@@ -1,0 +1,39 @@
+.mainContainer {
+    width: 100%;
+}
+
+.mainContainer h2 {
+    width: 80%;
+    margin: 50px auto;
+    font: 700;
+    font-size: 40px;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: auto;
+}
+
+
+
+.countryCard {
+    width: 20%;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.countryCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}

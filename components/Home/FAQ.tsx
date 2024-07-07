@@ -24,9 +24,9 @@ export default function FAQ() {
       }
 
     return (
-        <div>
+        <div className={styles.container}>
+            <h2>Frequently Asked Questions:</h2>
             <div className={styles.faqContainer}>
-                <h4>Frequently Asked Questions:</h4>
                 {
                     <Collapse items={getContent()} />
                 }
