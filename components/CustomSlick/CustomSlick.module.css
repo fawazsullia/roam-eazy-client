@@ -1,0 +1,44 @@
+
+.container {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    gap: 10px;
+}
+
+.countryCard {
+    width: 30%;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 300px;
+    position: relative;
+}
+
+.countryCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.cardText {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.cardText h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--secondaryTextColor);
+    margin: 0;
+}
+
+.cardText p {
+    font-size: 14px;
+    color: var(--secondaryTextColor);
+    margin: 0;
+}

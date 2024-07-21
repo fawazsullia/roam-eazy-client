@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    flex-wrap: wrap;
+}
+
+.imageContainer {
+    height: 300px;
+    width: 100%;
+}
+
+.image {
+    border-radius: 20px;
+}

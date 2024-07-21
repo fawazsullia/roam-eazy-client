@@ -1,0 +1,19 @@
+.container {
+    margin-top: 50px;
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font: 700;
+    font-size: 40px;
+}
+
+.cardsContainer {
+    display: flex;
+    width: 70%;
+    margin: auto;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}

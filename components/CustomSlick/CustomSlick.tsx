@@ -19,25 +19,29 @@ const CustomSlick = (props: IProps) => {
 
     const { customComponents } = props;
 
-    return <div>
+    return <div className={styles.container}>
+        <div>
+            <Image src={LeftArrowIcon} alt="slick-left" />
+        </div>
         {
             customComponents.map((component, index) => {
                 return (
-                    <div>
-                        <div>
-                            <Image src={LeftArrowIcon} alt="slick-left" />
-                        </div>
-                        <div key={component.id} className={styles.countryCard} style={{ backgroundImage: `url(${component.image})`, backgroundSize: "cover" }}>
-                            {/* <img width={300} height={300} src={country.image} alt={country.name} /> */}
+
+                    <div key={component.id} className={styles.countryCard} style={{ backgroundImage: `url(${component.image})`, backgroundSize: "cover" }}>
+                        {/* <img width={300} height={300} src={country.image} alt={country.name} /> */}
+                        <div className={styles.cardText}>
                             <h3>{component.title}</h3>
+                            <p>{component.subText}</p>
                         </div>
-                        <div>
-                            <Image src={RightArrowIcon} alt="slick-left" />
-                        </div>
+
                     </div>
+
                 )
             })
         }
+        <div>
+            <Image src={RightArrowIcon} alt="slick-left" />
+        </div>
     </div>
 }
 
