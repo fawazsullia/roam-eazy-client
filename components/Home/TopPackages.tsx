@@ -22,7 +22,7 @@ const TopPackages = () => {
                 endDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 30).toISOString(), // featured in 30 days bracket
                 // default active fetch
             });
-            setListings(results.data);
+            setListings(results.data.listings);
         } catch (err) {
             console.log(err);
             setListingError('Failed to fetch packages');
