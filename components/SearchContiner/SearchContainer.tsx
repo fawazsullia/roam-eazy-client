@@ -51,7 +51,7 @@ const SearchContainer = () => {
     const destinationSearch = async (value: string) => {
         try {
             const results = await axiosInstance.post('/api/place/get-destination', {
-                search: value,
+                searchTerm: value,
                 limit: 50,
                 offset: 0
             });

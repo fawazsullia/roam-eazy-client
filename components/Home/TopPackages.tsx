@@ -14,7 +14,7 @@ const TopPackages = () => {
 
     const fetchListings = async () => {
         try {
-            const results = await axiosInstance.post('/api/listing', {
+            const results = await axiosInstance.post('/api/listing/get-listings', {
                 offset: 0,
                 limit,
                 isFeatured: true,
