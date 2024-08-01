@@ -1,44 +1,53 @@
 
-.container {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    gap: 10px;
-}
 
-.countryCard {
-    width: 30%;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    height: 300px;
+.carouselContainer {
     position: relative;
-}
-
-.countryCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-}
-
-.cardText {
+    width: 100%;
+    min-width: 700px;
+    max-width: 1300px;
+    margin: auto;
+    background: #000;
+  }
+  
+  .slide {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    /* width: 400px !important; */
+  }
+  
+  .slideContent {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
-}
-
-.cardText h3 {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--secondaryTextColor);
-    margin: 0;
-}
-
-.cardText p {
-    font-size: 14px;
-    color: var(--secondaryTextColor);
-    margin: 0;
-}
+  }
+  
+  .navigation {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    min-width: 700px;
+    max-width: 1300px;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none; /* Ensure buttons don't interfere with card interactions */
+  }
+  
+  .prevButton, .nextButton {
+    pointer-events: auto; /* Allow button clicks */
+  }
+  
+  .prevButton {
+    position: absolute;
+    left: -50px; /* Adjust to place the arrow outside the card */
+  }
+  
+  .nextButton {
+    position: absolute;
+    right: -50px; /* Adjust to place the arrow outside the card */
+  }
+  
+  .prevButton img, .nextButton img {
+    width: 30px; /* Adjust the size as needed */
+    height: auto;
+  }
+  

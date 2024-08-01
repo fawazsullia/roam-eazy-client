@@ -8,6 +8,8 @@ import SearchContainer from "@/components/SearchContiner/SearchContainer";
 
 import BannerImage from '../assets/images/banner1.jpeg';
 import TopPackages from "@/components/Home/TopPackages";
+import Roameazy from "@/components/Home/Roameazy/Roameazy";
+import Subscribe from "@/components/Home/Subscribe/Subscribe";
 
 
 export default function Home(props: { title: string }) {
@@ -20,8 +22,10 @@ export default function Home(props: { title: string }) {
         <SearchContainer />
         <TopCountryRow />
         <Banner image={BannerImage} />
-        <TopPackages />
+        {/* <TopPackages /> */}
         <About />
+        <Roameazy/>
+        <Subscribe/>
         <FAQ />
       </main>
     </ClientContainer>

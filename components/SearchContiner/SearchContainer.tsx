@@ -2,13 +2,13 @@ import { Button, Col, DatePicker, Form, Select } from 'antd';
 import styles from './SearchContainer.module.css';
 import { useEffect, useState } from 'react';
 import { axiosInstance } from '@/utils/axios.utils';
-import { Place } from '@/inerfaces/Place.interface';
+import  Departing  from '../../icons/Departing.svg';
+import  Traveling  from '../../icons/Traveling.svg';
 import { useRouter } from 'next/router';
-
+import Image from "next/image";
 const { RangePicker } = DatePicker;
 
 const SearchContainer = () => {
-
     let timer: NodeJS.Timeout | null = null;
 
     const router = useRouter();
@@ -27,15 +27,14 @@ const SearchContainer = () => {
             try {
                 const results = await axiosInstance.post('/api/place/get-departing', {
                     isDeparture: true,
-                    limit: 50, // all places since these are limited in MVP
+                    limit: 50,
                     offset: 0
                 });
                 setDepartingPlaces(results.data);
             } catch (err) {
-                console.log(err, 'error in fetching departing places');
+                console.error(err, 'Error in fetching departing places');
             }
-        }
-        )();
+        })();
 
     }, []);
 
@@ -45,9 +44,9 @@ const SearchContainer = () => {
         timer = setTimeout(async () => {
             destinationSearch(destinationSearchValue);
         }, 1000);
+        return () => clearTimeout(timer!); // Cleanup timeout on unmount
     }, [destinationSearchValue])
 
-    // the search currently does not have the scroll debounce option. TODO: Implement the scroll debounce option
     const destinationSearch = async (value: string) => {
         try {
             const results = await axiosInstance.post('/api/place/get-destination', {
@@ -57,9 +56,8 @@ const SearchContainer = () => {
             });
             setDestinationPlaces(results.data);
         } catch (err) {
-            console.log(err, 'error in fetching destination places');
+            console.error(err, 'Error in fetching destination places');
         }
-
     }
 
     const handleDateSelection = (dates: any, dateStrings: [string, string]) => {
@@ -67,50 +65,72 @@ const SearchContainer = () => {
     }
 
     const handleSearchButtonClick = () => {
-        const query = {
-            departure: selectedDeparture,
-            destination: selectedDestination,
-            startDate: selectedDates[0],
-            endDate: selectedDates[1]
-        };
+        if (!selectedDeparture || !selectedDestination || !selectedDates[0] || !selectedDates[1]) {
+            alert('Please select all fields');
+            return;
+        }
         const url = `/${selectedDeparture}-to-${selectedDestination}?start=${selectedDates[0]}&end=${selectedDates[1]}`;
         router.push(url);
     }
 
     return (
-        <div className={styles.searchContainer}>
-            <h1>Explore beautiful places in the world with Roameazy </h1>
-            <Form layout='inline' className={styles.form}>
-                <div className={styles.formComponents}>
-                    <div className={styles.formComponent}>
-                        <Select placeholder='Departure From' className={styles.input} options={departingPlaces.map((map) => {
-                            return {
-                                value: map.placeId,
-                                label: map.name
-                            }
-                        })} showSearch filterOption={(input, option) =>
-                            (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                        } onChange={(selected) => setSelectedDeparture(selected.value)} />
+        <div className={styles.container}>
+            <div className={styles.searchContainer}>
+                <h1>Explore beautiful places in the world with Roameazy</h1>
+
+                <Form layout='inline' className={styles.form}>
+                    <div className={styles.formComponents}>
+
+                        <div className={styles.fromSelectDiv}>
+                            <div className={styles.selectWithIcon}>
+                            <Image src={Departing} alt="slick-left" className={styles.icon} />
+                            
+                                <Select
+                                    placeholder="Departure From"
+                                    className={styles.select}
+                                    options={departingPlaces.map((place) => ({
+                                        value: place.placeId,
+                                        label: place.name
+                                    }))}
+                                    showSearch
+                                    filterOption={(input, option) =>
+                                        (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                    }
+                                    onChange={(selected) => setSelectedDeparture(selected.value)}
+                                />
+                            </div>
+                            <div className={styles.selectWithIcon}>
+                             <Image src={Traveling} alt="slick-left" className={styles.icon} />
+                                <Select
+                                    placeholder="Arrive To"
+                                    className={styles.select}
+                                    options={destinationPlaces.map((place) => ({
+                                        value: place.placeId,
+                                        label: place.name
+                                    }))}
+                                    showSearch
+                                    filterOption={false}
+                                    onSearch={(value) => {
+                                        setDestinationSearchValue(value);
+                                    }}
+                                    onChange={(selected) => setSelectedDestination(selected.value)}
+                                />
+                            </div>
+
+                        </div>
+                        <div className={styles.fromButtonDiv}>
+                            <div className={styles.formComponent}>
+                                <RangePicker placeholder={["Start Date", "End Date"]} className={styles.input} format='DD/MM/YYYY' onChange={handleDateSelection} />
+                            </div>
+                            <div className={styles.formComponent}>
+                                <Button className={styles.searchBtn} onClick={handleSearchButtonClick}>Let's Go</Button>
+                            </div>
+                        </div>
                     </div>
-                    <div className={styles.formComponent}>
-                        <Select placeholder='Arrive To' className={styles.input} options={destinationPlaces.map((place) => {
-                            return {
-                                value: place.placeId,
-                                label: place.name
-                            }
-                        })} showSearch filterOption={false} onSearch={(value) => { setDestinationSearchValue(value) }} onChange={(selected) => setSelectedDestination(selected.value)} />
-                    </div>
-                    <div className={styles.formComponent}>
-                        <RangePicker width={4} placeholder={["Start Date", "End Date"]} className={styles.input} format='DD/MM/YYYY' onChange={handleDateSelection} />
-                    </div>
-                    <div className={styles.formComponent}>
-                        <Button className={styles.searchBtn} onClick={handleSearchButtonClick}>Lets Go</Button>
-                    </div>
-                </div>
-            </Form>
+                </Form>
+            </div>
         </div>
     )
 };
-
 
 export default SearchContainer;
