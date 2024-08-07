@@ -141,7 +141,7 @@
   }
 
   .inputContainer {
-    width: 80%;
+    width: 70%;
     display: flex;
     padding: 0px 0px;
     border-radius: 8px;
@@ -152,11 +152,11 @@
   .subscribeButton {
     background-color: #e57260;
     color: white;
-    width: 40%;
+    width: 36%;
     padding: 16px 10px;
     border: none;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 0.8rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
@@ -173,4 +173,28 @@
     color: #8C8C8C;
     margin-bottom: 30px;
   }
+}
+@media (min-width: 670px) and (max-width: 949px) {
+
+  .image {
+    margin-top: 6px;
+    height: 260px;
+    width: 100%;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+  
+  .contentContainer {
+    flex: 1;
+    height: 260px;
+    background-color: #f4f4f4;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
 }

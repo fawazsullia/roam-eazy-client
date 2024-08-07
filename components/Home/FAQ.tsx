@@ -1,37 +1,84 @@
-import { Collapse } from 'antd';
+import { useState } from 'react';
 import styles from './Faq.module.css';
+import Image from "next/image";
+import Plus from "../../icons/Plus.svg";
+import Minus from "../../icons/Minus.svg";
+import Question from "../../icons/Question.svg";
 
-export default function FAQ() {
+interface FAQItemProps {
+    question: string;
+    answer: string;
+    isOpen: boolean;
+    onClick: () => void;
+}
+
+const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onClick }) => {
+    return (
+        <div className={styles.faqItem}>
+            <div className={styles.faqQuestion} onClick={onClick}>
+                <span className={styles.icon}>
+                    <Image src={Question} alt="Question icon" />
+                </span>
+                <span className={styles.text}>{question}</span>
+                <span className={styles.toggleIcon}>
+                    {isOpen ? <Image src={Minus} alt="Collapse icon" className={styles.image} /> 
+                            : <Image src={Plus} alt="Expand icon" className={styles.image} />}
+                </span>
+            </div>
+            {isOpen && <div className={styles.faqAnswer}><p>{answer}</p></div>}
+        </div>
+    );
+};
+
+const FAQ: React.FC = () => {
+    const [openIndex, setOpenIndex] = useState<number>(0);
 
     const faqs = [
-        { title: "What is RoamEazy?", content: "RoamEazy is a platform that connects travelers with local guides. We offer a wide range of tours and experiences that are curated by our local guides." },
-        { title: "How do I book a tour?", content: "You can book a tour by visiting our website and selecting a tour that you are interested in. You can then select a date and time that works for you and complete the booking process." },
-        { title: "How much does a tour cost?", content: "The cost of a tour varies depending on the tour that you choose. You can view the price of each tour on our website." },
-        { title: "What is the cancellation policy?", content: "The cancellation policy varies depending on the tour that you choose. You can view the cancellation policy for each tour on our website." },
-        { title: "How do I contact RoamEazy?", content: "You can contact RoamEazy by sending an email to" },
-        { title: "How do I become a local guide?", content: "If you are interested in becoming a local guide, you can apply on our website. We are always looking for passionate individuals who are knowledgeable about their city and can provide an authentic experience for travelers." }
-    ]
+        {
+            question: 'What is RoamEazy.com?',
+            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque.',
+        },
+        {
+            question: 'How does RoamEazy.com work?',
+            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque.',
+        },
+        {
+            question: 'Is RoamEazy.com free to use?',
+            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque.',
+        },
+        {
+            question: 'Is RoamEazy.com free to use?',
+            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque.',
+        },
+        {
+            question: 'Is RoamEazy.com free to use?',
+            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque.',
+        },
+        // Add more FAQs as needed
+    ];
 
-    const getContent = () => {
-        const content = faqs.map((faq, index) => {
-          return {
-            key: index,
-            label: faq.title,
-            children: faq.content,
-          }
-        });
-        return content;
-      }
+    const handleFAQClick = (index: number) => {
+        setOpenIndex(openIndex === index ? null : index);
+    };
 
     return (
         <div className={styles.container}>
-            <h2>Frequently Asked Questions:</h2>
             <div className={styles.faqContainer}>
-                {
-                    <Collapse items={getContent()} />
-                }
+                <h1>FAQs</h1>
+                {faqs.map((faq, index) => (
+                    <div key={index} className={styles.test}>
+                        <FAQItem
+                            question={faq.question}
+                            answer={faq.answer}
+                            isOpen={openIndex === index}
+                            onClick={() => handleFAQClick(index)}
+                        />
+                    </div>
+                ))}
+                <button  className={styles.seeAllButton}>See all →</button>
             </div>
         </div>
     );
-}
+};
 
+export default FAQ;

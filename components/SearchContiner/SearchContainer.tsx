@@ -115,6 +115,7 @@ const SearchContainer = () => {
                                     }}
                                     onChange={(selected) => setSelectedDestination(selected.value)}
                                 />
+                                
                             </div>
 
                         </div>
