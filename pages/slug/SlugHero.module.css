@@ -1,0 +1,37 @@
+.heroContainer {
+    width: 100%;
+    height: 80vh;
+    background: linear-gradient(180deg, #0081B0 7.54%, rgba(0, 0, 0, 0.178) 29.76%) ,  url('../../assets/images/slughero.jpg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.heroContainer h1{
+    font-family: Poppins;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 74.8px;
+    text-align: center;
+    color: white;
+}
+
+
+
+@media (max-width: 900px) {
+    .heroContainer {
+        height: 40vh;
+    }
+    .heroContainer h1{
+        font-family: Poppins;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 44.8px;
+        text-align: center;
+        color: white;
+    }
+    
+}
