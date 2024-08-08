@@ -1,11 +1,9 @@
+/* TopCountryRow.module.css */
 .mainContainer {
-    width: 100%;
+  padding: 20px;
+  text-align: center;
 }
 
 .mainContainer h2 {
-    width: 80%;
-    margin: 50px auto;
-    font: 700;
-    font-size: 40px;
-    text-align: center;
+  margin-bottom: 20px;
 }

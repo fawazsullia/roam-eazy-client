@@ -1,5 +1,43 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 70px;
+    box-sizing: border-box;
+}
+
 .banner {
-    margin-top: 50px;
     width: 100%;
-    height: 500px;
+    max-width: 1270px;
+    margin-top: 92px;
+}
+
+
+.bannerimage {
+  height: 399px;
+    border-radius: 12px;
+    object-fit: cover;
+    width: 100%;
+    transform: scaleX(-1);
+}
+
+
+@media (max-width: 700px) {
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 0px;
+        box-sizing: border-box;
+    }
+    .bannerimage {
+        height: 199px;
+          border-radius: 0px;
+          
+      }
+      .banner {
+        margin-top: 62px;
+    }
+    
 }

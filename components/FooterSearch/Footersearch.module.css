@@ -1,0 +1,113 @@
+.container {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 70px;
+    box-sizing: border-box;
+}
+
+.searchContainer {
+    margin-bottom: -140px;
+    background-color: #b06c5e !important;
+      box-shadow: 0px 12px 24px 0px #006C951A;
+      width: 100%;
+      max-width: 900px;
+      padding: 40px;
+      padding-top: 18px;
+      border-radius: 32px;
+      text-align: center;
+   
+}
+
+.searchContainer h1 {
+    font-family: 'Poppins';
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 42px;
+    letter-spacing: -0.3799999952316284px;
+    text-align: center;
+    color: #ffffff;
+    margin: 0px;
+}
+
+
+.searchContainer p {
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: -0.3799999952316284px;
+ color: #ffffff;
+ margin: 0px;
+ margin-bottom: 30px;
+}
+
+
+
+.formComponents {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 18px;
+   text-align: center;
+   width: 100%;
+
+}
+
+
+
+.input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+}
+
+.joinBtn {
+    width: 100%;
+    background-color: #DF6951;
+    font-weight: 600;
+    color: white;
+    padding: 21px 0px;
+    border-radius: 5px;
+    border: none;
+}
+
+.joinBtn:hover {
+    background-color: #c55a42 !important;
+    color: #ffffff !important;
+}
+
+@media (max-width: 669px) {
+
+    .container {
+        padding: 0px 20px;
+      
+    }
+
+    .searchContainer {
+        padding: 20px;
+    }
+
+    .searchContainer h1 {
+        font-family: 'Poppins';
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 42px;
+        letter-spacing: -0.3799999952316284px;
+        text-align: center;
+        color: #ffffff;
+        margin: 0px;
+    }
+    
+    
+    .searchContainer p {
+        font-family: 'Poppins';
+        font-size:10px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: -0.3799999952316284px;
+     color: #ffffff;
+     margin: 0px;
+     margin-bottom: 30px;
+    }
+}

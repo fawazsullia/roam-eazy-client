@@ -12,9 +12,10 @@ const Banner = (props: IBannerProps) => {
     const { image } = props;
 
     return (
+        <div className={styles.container}> 
         <div className={styles.banner}>
-            <Image src={image} alt="banner" sizes="100vw" style={{ width: '100%', height: '100%' }} // optional
-                height={0} width={0} />
+            <Image src={image} alt="banner" className={styles.bannerimage} />
+        </div>
         </div>
     );
 }
