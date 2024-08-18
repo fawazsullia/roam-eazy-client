@@ -64,7 +64,7 @@ const FAQ = ({ faqs }) => {
 export default function CardDetail() {
     const [mainImage, setMainImage] = useState(galleryimage1);
     const [activeTab, setActiveTab] = useState(0);
-
+    const [activeIndex, setActiveIndex] = useState(0); 
     const handleThumbnailClick = (image) => {
         setMainImage(image);
     };
@@ -210,10 +210,20 @@ export default function CardDetail() {
             </div>
 
             <nav className={Styles.navbar}>
-                {["overview", "itinerary", "inclusions", "exclusions", "terms"].map((section, index) => (
-                    <Link key={index} to={section} smooth={true} duration={500}>{section.charAt(0).toUpperCase() + section.slice(1)}</Link>
-                ))}
-            </nav>
+            {["overview", "itinerary", "inclusions", "exclusions", "terms"].map((section, index) => (
+                <Link
+                    key={index}
+                    to={section}
+                    smooth={true}
+                    duration={500}
+                    offset={-80} 
+                    className={index === activeIndex ? Styles.active : ''}
+                    onClick={() => setActiveIndex(index)}
+                >
+                    {section.charAt(0).toUpperCase() + section.slice(1)}
+                </Link>
+            ))}
+        </nav>
 
             <Element name="overview" className={Styles.section}>
                 <h2>Overview</h2>

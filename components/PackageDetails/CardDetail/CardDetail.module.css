@@ -75,7 +75,7 @@
     font-weight: 700;
     line-height: 27.23px;
     text-align: left;
-    color: #DF6951;
+    color: var(--primaryColor) !important;
 }
 
 .perPerson {
@@ -84,7 +84,7 @@
     font-weight: 700;
     line-height: 27.23px;
     text-align: left;
-    color: black !important;
+    color: var(--primaryTextColor) !important;
 }
 
 .heading h5 {
@@ -95,7 +95,7 @@
     text-align: left;
     margin: 0px !important;
     margin-top: 8px !important;
-    color: #DF6951;
+    color: var(--primaryColor) !important;
 }
 
 .twinSharing {
@@ -104,7 +104,7 @@
     font-weight: 500;
     line-height: 27.23px;
     text-align: left;
-    color: black !important;
+    color: var(--primaryTextColor) !important;
 }
 
 .featuresContainer {
@@ -138,12 +138,14 @@
 .navbar {
     display: flex;
     justify-content: space-around;
-    background-color: #fff;
+    background-color: var(--secondaryTextColor) !important;
     border-radius: 12px;
     box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.126);
     padding: 10px 0px;
     width: 100%;
     margin-top: 40px;
+    position: sticky;
+    top: 0px;
 }
 
 .navbar a {
@@ -154,33 +156,35 @@
     line-height: 25.6px;
     text-align: left;
     padding: 10px 20px;
+    color: var(--primaryTextColor);
 }
 
-.navbar a:hover {
-    background-color: #DF6951;
-    color: #fff;
+.navbar a:hover, .navbar a:focus {
+    background-color: var(--primaryColor) !important;
+    color: var(--secondaryTextColor) !important;
     border-radius: 12px;
 }
 
-.navbar a:focus {
-    background-color: #DF6951 !important;
-    color: #fff;
+.navbar a.active {
+    background-color: var(--primaryColor) !important; /* Active link background color */
+    color: var(--secondaryTextColor) !important;
     border-radius: 12px;
 }
+
 
 .section {
     padding: 26px 26px;
     margin-top: 30px;
-    background-color: #fff;
+    background-color:var(--secondaryTextColor) !important;
     border-radius: 12px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.121);
 }
 
 .section h2 {
     margin-top: 0;
-    color: #000000;
+    color: var(--primaryTextColor) !important;
     width: fit-content;
-    border-bottom: 3px solid #DF6951;
+    border-bottom: 3px solid var(--primaryColor) !important;
     font-family: Poppins;
     font-size: 24px;
     font-weight: 600;
@@ -213,13 +217,13 @@
 }
 
 .tabButton {
-    background-color: white;
+    background-color: var(--secondaryTextColor) !important;
     margin: 0px;
     border-radius: 8px;
     border: none;
-    padding: 8px 24px;
+    padding: 10px 24px;
     margin: 0px 4px;
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 16px;
 }
@@ -254,7 +258,7 @@
 }
 
 .openText {
-    color: #DF6951;
+    color:var(--primaryColor) !important;
 }
 
 
@@ -289,6 +293,9 @@
     .navbar {
         display: none;
 
+    }
+    .feature span {
+        display: none;
     }
 }
 
@@ -332,7 +339,11 @@
         line-height: 27.23px;
         text-align: left;
     }
-
+    .feature {
+        display: flex;
+        align-items: center;
+    }
+    
     .feature img {
         width: 22px;
         height: 22px;
@@ -340,11 +351,7 @@
     }
 
     .feature span {
-        font-family: Poppins;
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 16px;
-        margin-left: 10px;
+        display: none;
     }
 
     .featuresContainer {
@@ -361,7 +368,7 @@
     }
 
     .tabButton {
-        background-color: white;
+        background-color:var(--secondaryTextColor) !important;
         margin-top: 0px !important;
         border-radius: 4px;
         border: none;
@@ -371,7 +378,9 @@
         font-weight: 600;
         line-height: 16px;
     }
-
+    .active {
+        background: #DF695126 !important;
+    }
     .section h2 {
         font-family: Poppins;
         font-size: 16px;

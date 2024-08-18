@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { axiosInstance } from '@/utils/axios.utils';
 import ClientContainer from '@/components/ClientContainer/ClientContainer';
-import Subscribe from '@/components/Home/Subscribe/Subscribe';
 import HeroDetails from '@/components/PackageDetails/HeroDetails';
 import SimilarPackages from '@/components/PackageDetails/SimilarPackages';
 import styles from './[id].module.css';
@@ -38,7 +37,7 @@ const PackageDetails = () => {
     // if (error) return <div>{error}</div>;
 
     return (
-        <div >
+        <div className={styles.detailDiv}>
             <ClientContainer>
                 <HeroDetails />
 
@@ -54,7 +53,6 @@ const PackageDetails = () => {
                 </div>
 
                 <SimilarPackages />
-                <Subscribe />
             </ClientContainer>
 
         </div>

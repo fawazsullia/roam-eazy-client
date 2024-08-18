@@ -27,7 +27,7 @@
     line-height: 42px;
     letter-spacing: -0.3799999952316284px;
     text-align: center;
-    color: #ffffff;
+    color: var(--secondaryTextColor) !important;
     margin: 0px;
 }
 
@@ -38,7 +38,7 @@
     font-weight: 400;
     line-height: 21px;
     letter-spacing: -0.3799999952316284px;
- color: #ffffff;
+    color: var(--secondaryTextColor) !important;
  margin: 0px;
  margin-bottom: 30px;
 }
@@ -64,17 +64,17 @@
 
 .joinBtn {
     width: 100%;
-    background-color: #DF6951;
+    background-color:var(--primaryColor) !important;
     font-weight: 600;
-    color: white;
+    color: var(--secondaryTextColor) !important;
     padding: 21px 0px;
     border-radius: 5px;
     border: none;
 }
 
 .joinBtn:hover {
-    background-color: #c55a42 !important;
-    color: #ffffff !important;
+    background-color:var(--primaryColor) !important;
+    color: var(--secondaryTextColor) !important;
 }
 
 @media (max-width: 669px) {
@@ -95,7 +95,7 @@
         line-height: 42px;
         letter-spacing: -0.3799999952316284px;
         text-align: center;
-        color: #ffffff;
+        color: var(--secondaryTextColor) !important;
         margin: 0px;
     }
     
@@ -106,7 +106,7 @@
         font-weight: 400;
         line-height: 16px;
         letter-spacing: -0.3799999952316284px;
-     color: #ffffff;
+        color: var(--secondaryTextColor) !important;
      margin: 0px;
      margin-bottom: 30px;
     }

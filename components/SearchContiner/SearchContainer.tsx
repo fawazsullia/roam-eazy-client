@@ -97,6 +97,7 @@ const SearchContainer = () => {
                                         (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                                     }
                                     onChange={(selected) => setSelectedDeparture(selected.value)}
+                                    
                                 />
                             </div>
                             <div className={styles.selectWithIcon}>

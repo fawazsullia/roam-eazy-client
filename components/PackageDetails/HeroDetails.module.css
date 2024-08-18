@@ -16,7 +16,7 @@
     font-weight: 700;
     line-height: 74.8px;
     text-align: center;
-    color: white;
+    color:var(--secondaryTextColor) !important;
 }
 
 
@@ -31,7 +31,7 @@
         font-weight: 700;
         line-height: 44.8px;
         text-align: center;
-        color: white;
+        color:var(--secondaryTextColor) !important;
     }
     
 }

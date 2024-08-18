@@ -80,9 +80,9 @@ const PackageCard = ({ id, image1, image2, image3, title, price, details, verifi
                 </div>
                 <div className={styles.endContainer}>
                     <span className={styles.price}>{price}</span>
-                    <Link href={`/details/${id}`}>
+                    <a href={`/details/${id}`}>
                         <Button className={styles.seemore}>see more</Button>
-                    </Link>
+                    </a>
                 </div>
             </div>
         </div>

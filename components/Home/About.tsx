@@ -3,13 +3,9 @@ import Image from "next/image";
 import cappadocia from "../../assets/images/cappadocia.svg"
 import pamukkale from "../../assets/images/pamukkale.svg"
 import bosphorus from "../../assets/images/bosphorus.svg"
-import { useRouter } from 'next/router';
+
 export default function About() {
-    const router = useRouter();
-    const handleSeeAllClick = () => {
-        console.log("Button clicked");
-        router.push('/slug/listings?departure=someDeparture&destination=someDestination');
-    }
+  
     return (
         <div className={styles.container}>
             <div className={styles.background}>
@@ -23,7 +19,8 @@ export default function About() {
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                 Lorem Ipsum has been the industry's
                                 standard dummy text ever since the 1500s.</p>
-                                <button className={styles.seeAllButton} onClick={handleSeeAllClick}>See all →</button>
+                                <a href="/slug/listings?departure=someDeparture&destination=someDestination">
+                                <button className={styles.seeAllButton}>See all →</button></a>
                         </div>
                         <div className={styles.aboutSides}>
                             <div className={styles.imageDiv}>

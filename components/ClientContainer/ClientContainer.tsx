@@ -41,9 +41,13 @@ const ClientContainer: React.FC<IClientContainerProps> = ({ children }) => {
                     <a href="/signup" className={`${styles.signUp} ${styles.mobile}`}>Sign Up</a>
                 </nav>
             </header>
+
+            
             <main>
                 {children}
             </main>
+
+
             <footer>
                 <div className={styles.container}>
                     <main className={styles.main}>

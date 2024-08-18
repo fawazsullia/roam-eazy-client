@@ -4,7 +4,6 @@ import Image from "next/image";
 import Plus from "../../icons/Plus.svg";
 import Minus from "../../icons/Minus.svg";
 import Question from "../../icons/Question.svg";
-import { useRouter } from 'next/router';
 interface FAQItemProps {
     question: string;
     answer: string;
@@ -21,8 +20,8 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onClick }) 
                 </span>
                 <span className={styles.text}>{question}</span>
                 <span className={styles.toggleIcon}>
-                    {isOpen ? <Image src={Minus} alt="Collapse icon" className={styles.image} /> 
-                            : <Image src={Plus} alt="Expand icon" className={styles.image} />}
+                    {isOpen ? <Image src={Minus} alt="Collapse icon" className={styles.image} />
+                        : <Image src={Plus} alt="Expand icon" className={styles.image} />}
                 </span>
             </div>
             {isOpen && <div className={styles.faqAnswer}><p>{answer}</p></div>}
@@ -60,10 +59,8 @@ const FAQ: React.FC = () => {
     const handleFAQClick = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
     };
-    const router = useRouter();
-    const handleSeeAllClick = () => {
-        router.push('/slug/listings?departure=someDeparture&destination=someDestination');
-    }
+
+
     return (
         <div className={styles.container}>
             <div className={styles.faqContainer}>
@@ -78,7 +75,8 @@ const FAQ: React.FC = () => {
                         />
                     </div>
                 ))}
-               <button className={styles.seeAllButton} onClick={handleSeeAllClick}>See all →</button>
+                <a href="/slug/listings?departure=someDeparture&destination=someDestination">
+                    <button className={styles.seeAllButton}>See all →</button></a>
             </div>
         </div>
     );

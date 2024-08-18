@@ -3,19 +3,16 @@
   justify-content: center; 
   align-items: center;  
   padding: 0 60px;       
-/* background-color: aqua; */
   box-sizing: border-box; 
  
 }
 
 .sliderdiv{
-  /* background-color: bisque; */
   max-width: 1300px;
   min-width: 650px;
 }
 
 .heading{
-  /* background-color: blue; */
   text-align: center;
   margin-top: 80px;
   margin-bottom: 60px;
@@ -42,9 +39,7 @@ line-height: 44px;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* text-align: center; */
-  color: white;
-  /* min-width: 320px; */
+  color:var(--secondaryTextColor) !important;
   max-height: 355px;
 }
 
@@ -67,7 +62,7 @@ line-height: 44px;
   bottom: 0;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.4) 100%);
   border-radius: 12px !important;
-  pointer-events: none; /* This makes sure the gradient does not interfere with the image click */
+  pointer-events: none;
 }
 .textContainer {
   position: absolute;
@@ -82,13 +77,11 @@ line-height: 44px;
   font-weight: 700;
   line-height: 54px;
   text-align: left;
-  /* background-color: #fff; */
   margin: 0px;
 }
 
 .description {
   margin: 0px ;
-  /* background-color: #ddd; */
   font-family: Poppins;
 font-size: 20px;
 font-weight: 400;
@@ -102,28 +95,21 @@ color: #D8D8D8;
 }
 
 
-.nextbtn{
-  background-color: aqua !important;
-}
-
 @media (max-width: 670px) {
   .container {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 20px;
-    /* background: #d34545; */
     box-sizing: border-box;
   }
 
   .sliderdiv {
-    /* background-color: bisque; */
     width: 100%;
     max-width: 100%;
     min-width: 100%;
   }
   .heading{
-    /* background-color: blue; */
     text-align: center;
     margin-top: 60px;
     margin-bottom: 40px;
@@ -173,7 +159,7 @@ color: #D8D8D8;
 
 .info h3 {
   margin: 0px ;
-  color: #ffffff;
+  color:var(--secondaryTextColor) !important;
   font-size: 22px;
   font-weight: 700;
   line-height: 33px;
@@ -188,7 +174,7 @@ color: #D8D8D8;
   font-weight: 400;
   line-height: 18px;
   text-align: left;
- color: #D8D8D8;
+ color:var(--secondaryTextColor) !important;
   
 }
 }

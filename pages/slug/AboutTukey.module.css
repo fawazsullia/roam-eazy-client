@@ -10,7 +10,7 @@
 
 .mainHeading {
     font-size:36px;
-    color: #1A1A1A;
+    color: var(--primaryTextColor) !important;
     text-align: center;
     margin-bottom: 24px;
 }
@@ -51,7 +51,7 @@
 .cardHeading {
     font-size: 20px;
     margin: 16px 0;
-    color: #1A1A1A;
+    color: var(--primaryTextColor) !important;
 }
 
 .cardDescription {

@@ -14,10 +14,6 @@ import flight from "../../assets/images/flight.svg"
 import insurance from "../../assets/images/Insurance.svg"
 import hotel from "../../assets/images/Hotel.svg"
 import transportation from "../../assets/images/Transportation.svg"
-import { useRouter } from 'next/router';
-
-import { Result } from 'antd';
-
 
 const TopPackages = () => {
     const defaultLimit = 6;
@@ -25,7 +21,6 @@ const TopPackages = () => {
     const [listings, setListings] = useState<IListing[]>([]);
     const [isListingLoading, setIsListingLoading] = useState(false);
     const [listingError, setListingError] = useState('');
-    const router = useRouter();
 
     const fetchListings = async () => {
         setIsListingLoading(true);
@@ -71,9 +66,6 @@ const TopPackages = () => {
         })();
     }, [limit]);
 
-    const handleSeeAllClick = () => {
-        router.push('/slug/listings?departure=someDeparture&destination=someDestination');
-    }
 
     const packages = [
         {
@@ -182,7 +174,8 @@ const TopPackages = () => {
                     ))
                 }
             </div>
-            <button className={styles.seeAllButton} onClick={handleSeeAllClick}>See all →</button>
+            <a href="/slug/listings?departure=someDeparture&destination=someDestination">
+                <button className={styles.seeAllButton}>See all →</button></a>
         </div>
     );
 }

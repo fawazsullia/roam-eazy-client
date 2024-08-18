@@ -146,9 +146,7 @@ export default function Listings() {
         <SlugHero/>
         <List/>
         <AboutTurkey/>
-        <Subscribe/>
         <FAQ/>
-        <FooterSearch/>
       </main>
     </ClientContainer>
   );
