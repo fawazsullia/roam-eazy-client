@@ -1,24 +1,47 @@
 import styles from './About.module.css';
+import Image from "next/image";
+import cappadocia from "../../assets/images/cappadocia.svg"
+import pamukkale from "../../assets/images/pamukkale.svg"
+import bosphorus from "../../assets/images/bosphorus.svg"
 
 export default function About() {
+  
     return (
         <div className={styles.container}>
-            <h2>About RoamEazy</h2>
-            <p>RoamEazy serves as a dynamic marketplace where multiple travel and tourism companies
-converge to showcase their enticing holiday packages. This platform offers travelers a one stop
-destination to explore an array of options, from exotic getaways to adventurous expeditions, all
-curated by reputable companies in the industry.
-
-
-With RoamEazy, travelers can effortlessly compare and book holiday packages tailored to their
-preferences and budget. Whether craving a serene beach retreat, a thrilling safari adventure, or a
-cultural immersion in bustling cities, the diverse offerings cater to every wanderlust.
-
-
-Through RoamEazy, travelers enjoy the convenience of browsing through various holiday
-packages, complete with detailed itineraries and transparent pricing. With a seamless booking
-process and trusted partners, RoamEazy ensures that every journey is as smooth and memorable
-as possible, promising unforgettable travel experiences at the click of a button.</p>
+            <div className={styles.background}>
+                <div className={styles.overlay}></div>
+                <div className={styles.aboutFirstDiv}>
+                    <h1>explore Turkey</h1>
+                </div>
+                <div className={styles.aboutComponent}>
+                    <div className={styles.aboutSecondDiv}>
+                        <div className={styles.aboutSides}>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                Lorem Ipsum has been the industry's
+                                standard dummy text ever since the 1500s.</p>
+                                <a href="/slug/listings?departure=someDeparture&destination=someDestination">
+                                <button className={styles.seeAllButton}>See all →</button></a>
+                        </div>
+                        <div className={styles.aboutSides}>
+                            <div className={styles.imageDiv}>
+                                <div className={styles.imagecard}>
+                                    <Image src={cappadocia} alt="Cappadocia" className={styles.image} />
+                                    <h2>Cappadocia</h2>
+                                </div>
+                                <div className={styles.imagecard}>
+                                    <Image src={pamukkale} alt="Pamukkale" className={styles.image} />
+                                    <h2>Pamukkale</h2>
+                                </div>
+                                <div className={styles.imagecard}>
+                                    <Image src={bosphorus} alt="Bosphorus" className={styles.image} />
+                                    <h2>Bosphorus</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     );
 }

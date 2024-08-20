@@ -1,0 +1,107 @@
+.searchContainer {
+    background-color: var(--secondaryTextColor) !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 18px;
+    position: sticky;
+    top: 0px;
+}
+
+.logo {
+    margin-bottom: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: left;
+}
+
+.logo h4 {
+    margin: 0px !important;
+    padding-top: 5px;
+    margin-left: 10px !important;
+    color: #2F234F;
+    font-size: 20px;
+    font-weight: 700;
+
+}
+
+.content {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: left;
+    margin-bottom: 24px;
+
+}
+
+.buttonContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 20px;
+}
+
+.mobileButtonContainer {
+display: none;
+}
+
+.button {
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22.4px;
+    letter-spacing: 0.20000000298023224px;
+    text-align: left;
+    text-decoration: none;
+    margin-left: 10px;
+    color: var(--secondaryTextColor) !important;
+}
+
+.callButton {
+    min-width: 100px;
+    background: var(--primaryColor) !important;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.whatsappButton {
+    min-width: 100px;
+    background: linear-gradient(90deg, #20B038 0%, #20B038 100%);
+    padding: 10px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+}
+
+@media (max-width: 480px) {
+
+    .buttonContainer {   
+        display: none;
+    }
+    
+    .mobileButtonContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        gap: 20px;
+  position: fixed;
+  bottom: 6px;
+  left: 0px;
+  right: 0px;
+  scale: 0.8;
+  z-index: 999;
+    }
+
+    
+}  
+

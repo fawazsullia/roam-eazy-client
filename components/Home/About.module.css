@@ -1,16 +1,270 @@
 .container {
-    width: 80%;
-    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 70px;
+    box-sizing: border-box;
+    margin-bottom: 100px;
+    position: relative;
+    z-index: 1;
 }
 
-.container p {
-    width: 90%;
-    margin: auto;
+.background {
+    position: relative;
+    background-image: url('../../assets/images/about.svg');
+    background-size: cover;
+    background-position: center;
+    max-width: 1270px;
+    width: 100%;
+    z-index: 1;
 }
 
-.container h2 {
+.overlay {
+    opacity: 12%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primaryTextColor) !important;
+    z-index: 2;
+    pointer-events: none; /* Ensure overlay does not block clicks */
+}
+
+.aboutFirstDiv {
+    padding: 0px 50px;
+    padding-top: 30px;
+    position: relative;
+    z-index: 3;
+}
+
+.aboutFirstDiv h1 {
+    margin-bottom: 30px !important;
+    font-family: 'Poppins', sans-serif;
+    font-size: 82px;
+    font-weight: 700;
+    line-height: 104px;
+    text-align: left;
+    color: var(--secondaryTextColor) !important;
+    text-transform: uppercase;
+}
+
+.aboutSecondDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    color: var(--secondaryTextColor) !important;
+    border-top: 1px solid var(--secondaryTextColor) !important;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 3;
+}
+
+.aboutComponent {
+    padding: 10px 50px;
+    position: relative;
+    z-index: 3;
+}
+
+.aboutSides {
+    padding-top: 40px;
+}
+
+.imageDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.imagecard {
+    overflow: hidden;
+}
+
+.imagecard h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 28.8px;
+    text-align:left;
+    color: var(--secondaryTextColor) !important;
+    margin: 10px 0;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+}
+
+.aboutSides p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 36px;
+}
+
+.seeAllButton {
     text-align: center;
-    margin-bottom: 20px;
-    font: 700;
-    font-size: 40px;
+    margin-top: 20px;
+    padding: 12px 34px 10px 40px;
+    border-radius: 40px;
+    background-color: var(--secondaryTextColor) !important;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    border: 1.25px solid #9f9f9f;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+}
+
+@media (max-width: 549px) {
+    .container {
+        padding: 0 20px;
+        margin-bottom: 60px;
+    }
+
+    .aboutSecondDiv {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .imageDiv {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .aboutFirstDiv h1 {
+        margin-bottom: 8px !important;
+        font-size: 32px;
+        line-height: 52px;
+    }
+
+    .aboutSides p {
+        font-size: 16px;
+        line-height: 30px;
+    }
+
+    
+.seeAllButton {
+        margin-top: 10px;
+    }
+
+    .aboutFirstDiv {
+        padding: 0px 16px;
+        padding-top: 10px;
+    }
+    .aboutComponent {
+        padding: 10px 16px;
+    }
+    
+    .imagecard h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        margin-top: -6px;
+    
+    }
+}
+@media (min-width: 549px) and (max-width: 700px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .aboutSecondDiv {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .imageDiv {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+   
+    .aboutFirstDiv {
+        padding: 0px 16px;
+        padding-top: 10px;
+    }
+    .aboutComponent {
+        padding: 10px 16px;
+    }
+    .aboutFirstDiv h1 {
+        margin-bottom: 0px !important;
+        font-size: 42px;
+        line-height: 52px;
+    }
+
+    .aboutSides p {
+        font-size: 16px;
+        line-height: 30px;
+    }
+
+   
+.seeAllButton {
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 900px) {
+    .aboutSecondDiv {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .aboutFirstDiv h1 {
+        margin-bottom: 0px !important;
+        font-size: 49px !important;
+    }
+    .aboutFirstDiv {
+        padding: 0px 16px;
+        padding-top: 10px;
+    }
+    .aboutComponent {
+        padding: 10px 16px;
+    }
+    
+    .aboutSides {
+        padding-top: 40px;
+    }
+    .imagecard h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 18px;
+        text-align:left;
+        color: var(--secondaryTextColor) !important;
+        margin: 10px 0;
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1100px) {
+    .aboutFirstDiv {
+        padding-top: 20px;
+    }
+
+    .aboutFirstDiv h1 {
+        margin-bottom: 24px !important;
+        font-size: 62px !important;
+    }
+
+    .aboutSides p {
+        font-family: 'Poppins';
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 30px;
+    }
+
+   
+.seeAllButton {
+        margin-top: 10px;
+    }
+
+    .imagecard h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 18px;
+        text-align:left;
+        color: var(--secondaryTextColor) !important;
+        margin: 10px 0;
+    }
 }

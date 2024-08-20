@@ -5,6 +5,11 @@
     --primaryColor: #DF6951;
     --primaryTextColor: #000000;
     --secondaryTextColor: white;
+    --textLight: #8C8C8C;
+    --backgroundLight : #F7F7F780;
+   --gradientBackground: linear-gradient(90deg, #DF6951 0%, #BF4931 100%);
+    --imageButton:grey;
+
 }
 
 body {

@@ -2,23 +2,349 @@
     position: absolute;
     top: 0;
     width: 100%;
-    height: 100px;    display: flex;
-    padding: 0 50px;
+    height: 80px;
+    display: flex;
+    padding: 0 10%;
     justify-content: space-between;
     box-sizing: border-box;
 }
 
-.menuContainer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+.navbar {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
 }
 
-.menuContainer ul {
+.logo {
+    width: 125px;
+    font-family: 'Abril Fatface' !important;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 29.68px;
+    color: var(--secondaryTextColor) !important;
+}
+
+.navLinks {
     display: flex;
+    gap: 56px;
     list-style: none;
-    justify-content: space-between;
-    gap: 10px;
+}
+
+.navLinks li {
+    margin: 0;
+}
+
+.navLinks a {
+    width: 72px;
+    height: 11px;
+    text-decoration: none;
+    color: var(--secondaryTextColor) !important;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.navLinks a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(100px);
+    -webkit-backdrop-filter: blur(100px);
+    border-radius: 4px;
+    color: var(--secondaryTextColor) !important;
+}
+
+.navLinks a.active {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(70px);
+    -webkit-backdrop-filter: blur(80px);
+    border-radius: 4px;
+    color: var(--secondaryTextColor) !important;
+}
+
+.signUp {
+    background: var(--primaryColor) !important;
+    padding: 0.4rem 1.4rem !important;
+    padding-bottom: 0.5rem;
+    border-radius: 4px;
+    color: var(--secondaryTextColor) !important;
+    font-weight: 500;
+    font-size: 16px !important;
+}
+
+.signUp:hover {
+    background: var(--primaryColor) !important;
+    border-radius: 4px !important;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--secondaryTextColor) !important;
+    margin: 2px 0;
+}
+
+.mobile {
+    display: none;
+}
+
+
+.mobilelogo {
+    display: flex;
+    gap: 14px;
+}
+
+/* Mobile view */
+@media (max-width: 890px) {
+
+    .headerContainer {
+        padding: 0 4%;
+
+    }
+
+    .signUp {
+        display: none;
+
+    }
+
+    .mobile {
+        display: block;
+        text-decoration: none;
+    }
+
+    .navLinks {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: #ffffff13;
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        border-top: 1px solid #ccc;
+    }
+
+    .navLinks.open {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+
+
+
+
+
+
+
+/* ----------=========footer========---------- */
+
+
+.container {
+    margin-top: 40px;
+    padding: 0 70px;
+    background-color: rgb(0, 0, 0);
+    color: var(--secondaryTextColor) !important;
+    text-align: center !important;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.main {
+    max-width: 1300px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    flex-wrap: wrap;
+}
+
+.leftDiv {
+    width: 60%;
+    margin-top: 160px;
+    box-sizing: border-box;
+}
+
+.rightDiv {
+    width: 40%;
+    margin-top: 160px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.leftinnerDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.inner {
+    width: 84%;
+    text-align: left;
+}
+
+.innerp {
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.h2heading {
+    font-family: 'Poppins';
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    text-align: left;
+
+}
+
+.innerul {
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+
+}
+
+
+.innerul li {
+    list-style: none;
+    margin-left: -40px;
+    margin-bottom: 8px;
+}
+
+.socialicon {
+    height: 24px;
+    width: 24px;
+    background-color: var(--secondaryTextColor) !important;
+    margin-top: 8px;
+    margin-right: 12px;
+    padding: 8px;
+    border-radius: 20px;
+}
+
+.information {
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.locationimage {
+    width: 100%;
+    max-width: 500px;
+}
+
+.copyright {
+    border-top: 1px solid rgb(147, 147, 147);
+    width: 100%;
+    max-width: 1300px;
+}
+
+.copyright p {
+    font-size: 10pt;
+    color: rgb(147, 147, 147);
+}
+
+
+
+@media (max-width: 700px) {
+
+    .container {
+        padding: 0 20px;
+        background-color: rgb(0, 0, 0);
+    }
+
+    .rightDiv {
+        width: 40%;
+        margin-top: 60px;
+        margin-bottom: 20px;
+
+    }
+
+    .innerp {
+        font-family: 'Poppins';
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .h2heading {
+        font-family: 'Poppins';
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 30px;
+        text-align: left;
+
+    }
+
+    .innerul {
+        font-family: 'Poppins';
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: left;
+
+    }
+
+
+    .innerul li {
+        list-style: none;
+        margin-left: -40px;
+        margin-bottom: 4px;
+    }
+
+    .socialicon {
+        height: 18px;
+        width: 18px;
+        background-color: var(--secondaryTextColor) !important;
+        margin-top: 4px;
+        margin-right: 8px;
+        padding: 8px;
+        border-radius: 20px;
+    }
+
+    .copyright p {
+        font-size: 8pt;
+        color: rgb(147, 147, 147);
+    }
+
+}
+
+@media (max-width: 999px) {
+
+    .leftDiv,
+    .rightDiv {
+        width: 100%;
+    }
+
+    .inner {
+        width: 94%;
+
+    }
 }
