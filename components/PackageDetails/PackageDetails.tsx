@@ -6,7 +6,7 @@ import styles from './PackageDetail.module.css';
 const PackageDetail = () => {
     const router = useRouter();
     const { id } = router.query;
-    const [packageDetail, setPackageDetail] = useState(null);
+    const [packageDetail, setPackageDetail] = useState<any>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
 
@@ -51,7 +51,7 @@ const PackageDetail = () => {
             <h2>Price: {packageDetail.price}</h2>
             <h3>Includes:</h3>
             <ul>
-                {packageDetail.details.map((detail, index) => (
+                {packageDetail.details.map((detail: any, index: any) => (
                     <li key={index}>
                         <img src={detail.icon} alt={detail.name} className={styles.icon} />
                         {detail.name}

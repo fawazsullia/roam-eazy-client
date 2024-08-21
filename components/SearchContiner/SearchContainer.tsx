@@ -6,6 +6,7 @@ import  Departing  from '../../icons/Departing.svg';
 import  Traveling  from '../../icons/Traveling.svg';
 import { useRouter } from 'next/router';
 import Image from "next/image";
+import { Place } from '@/inerfaces/Place.interface';
 const { RangePicker } = DatePicker;
 
 const SearchContainer = () => {

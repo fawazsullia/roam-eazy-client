@@ -15,7 +15,7 @@ import thailandmobile from "../../assets/images/thailandmobile.svg";
 import leftarrow from "../../icons/leftArrow.svg"
 import rightarrow from "../../icons/rightArrow.svg"
 
-function SampleNextArrow(props) {
+function SampleNextArrow(props: any) {
   const { className, style, onClick } = props;
   return (
     <>
@@ -32,7 +32,7 @@ function SampleNextArrow(props) {
   );
 }
 
-function SamplePrevArrow(props) {
+function SamplePrevArrow(props: any) {
   const { className, style, onClick } = props;
   return (
     <>

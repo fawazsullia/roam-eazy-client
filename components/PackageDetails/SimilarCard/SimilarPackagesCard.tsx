@@ -21,7 +21,7 @@ const SimilarPackageCard = ({ id, image1, image2, image3, title, price, details,
     const [currentImage, setCurrentImage] = useState(image1);
     const [activeButton, setActiveButton] = useState(1);
 
-    const handleImageChange = (image, index) => {
+    const handleImageChange = (image: any, index: any) => {
         setCurrentImage(image);
         setActiveButton(index);
     };

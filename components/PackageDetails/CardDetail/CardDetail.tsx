@@ -20,7 +20,7 @@ import meals from "../../../assets/images/meals.svg";
 import airport from "../../../assets/images/airport.svg";
 import visa from "../../../assets/images/visa.svg";
 
-const FAQItem = ({ question, answers, isOpen, onClick }) => {
+const FAQItem = ({ question, answers, isOpen, onClick }: { question: any; answers: any; isOpen: any; onClick: any }) => {
     return (
         <div className={Styles.faqItem}>
             <div className={Styles.faqQuestion} onClick={onClick}>
@@ -29,7 +29,7 @@ const FAQItem = ({ question, answers, isOpen, onClick }) => {
             {isOpen && (
                 <div className={Styles.faqAnswer}>
                     <ul>
-                        {answers.map((answer, index) => (
+                        {answers.map((answer: any, index: any) => (
                             <li key={index}>{answer}</li>
                         ))}
                     </ul>
@@ -39,16 +39,16 @@ const FAQItem = ({ question, answers, isOpen, onClick }) => {
     );
 };
 
-const FAQ = ({ faqs }) => {
+const FAQ = ({ faqs }: { faqs: any }) => {
     const [openIndex, setOpenIndex] = useState(0);
 
-    const handleFAQClick = (index) => {
+    const handleFAQClick = (index: any) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
     return (
         <div className={Styles.faqContainer}>
-            {faqs.map((faq, index) => (
+            {faqs.map((faq: any, index: any) => (
                 <FAQItem
                     key={index}
                     question={faq.question}
@@ -65,11 +65,11 @@ export default function CardDetail() {
     const [mainImage, setMainImage] = useState(galleryimage1);
     const [activeTab, setActiveTab] = useState(0);
     const [activeIndex, setActiveIndex] = useState(0); 
-    const handleThumbnailClick = (image) => {
+    const handleThumbnailClick = (image: any) => {
         setMainImage(image);
     };
 
-    const handleTabClick = (index) => {
+    const handleTabClick = (index: any) => {
         setActiveTab(index);
     };
 

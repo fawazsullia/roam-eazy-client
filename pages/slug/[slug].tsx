@@ -5,11 +5,11 @@ import Subscribe from "@/components/Home/Subscribe/Subscribe";
 import SlugHero from "./SlugHero";
 import AboutTurkey from "./AboutTurkey";
 import List from "./List";
-import { IGetListingApi } from "@/interfaces/IGetListingApi.interface";
-import { IListing } from "@/interfaces/IListing.interface";
 import { axiosInstance } from "@/utils/axios.utils";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { IListing } from "@/inerfaces/IListing.interface";
+import { IGetListingApi } from "@/inerfaces/IGetListingApi.interface";
 
 
 export default function Listings() {

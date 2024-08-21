@@ -291,8 +291,8 @@ export default function List() {
   }, []);
 
   useEffect(() => {
-    const sortData = (data, sortOption) => {
-      return data.sort((a, b) => {
+    const sortData = (data: any, sortOption: any) => {
+      return data.sort((a: any, b: any) => {
         if (sortOption === "name") {
           return a.title.localeCompare(b.title);
         } else if (sortOption === "price") {
@@ -303,10 +303,10 @@ export default function List() {
       });
     };
 
-    const filterData = (data, departure, destination, flight, budget, nights) => {
-      return data.filter(item => {
-        const hasFlight = item.details.some(detail => detail.name === "Flight");
-        const packageNights = parseInt(item.details.find(detail => detail.name.includes("Nights")).name.split(" ")[0]);
+    const filterData = (data: any, departure: any, destination: any, flight: any, budget: any, nights: any) => {
+      return data.filter((item: any) => {
+        const hasFlight = item.details.some((detail: any) => detail.name === "Flight");
+        const packageNights = parseInt(item.details.find((detail: any) => detail.name.includes("Nights")).name.split(" ")[0]);
         return (
           (departure === "" || item.departure === departure) &&
           (destination === "" || item.destination === destination) &&
@@ -331,27 +331,27 @@ export default function List() {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
-  const handleSortChange = (e) => {
+  const handleSortChange = (e: any) => {
     setSortOption(e.target.value);
   };
 
-  const handleDepartureChange = (e) => {
+  const handleDepartureChange = (e: any) => {
     setFilterDeparture(e.target.value);
   };
 
-  const handleDestinationChange = (e) => {
+  const handleDestinationChange = (e: any) => {
     setFilterDestination(e.target.value);
   };
 
-  const handleFlightChange = (e) => {
+  const handleFlightChange = (e: any) => {
     setFilterFlight(e.target.value);
   };
 
-  const handleBudgetChange = (value) => {
+  const handleBudgetChange = (value: any) => {
     setFilterBudget(value);
   };
 
-  const handleNightsChange = (value) => {
+  const handleNightsChange = (value: any) => {
     setFilterNights(value);
   };
 
@@ -360,7 +360,7 @@ export default function List() {
   const currentRows = sortedData.slice(indexOfFirstRow, indexOfLastRow);
   const midpoint = Math.floor(currentRows.length / 2);
 
-  const handleImageChange = (image, index, cardIndex) => {
+  const handleImageChange = (image: any, index: any, cardIndex: any) => {
     const newCurrentImages = [...currentImages];
     newCurrentImages[cardIndex] = image;
     setCurrentImages(newCurrentImages);
@@ -507,7 +507,7 @@ export default function List() {
                     </div>
                   </div>
 
-                  {currentRows.map((data, cardIndex) => (
+                  {currentRows.map((data: any, cardIndex) => (
                     <div key={data.id}>
                       {/* Display heading after every 4 cards */}
                       {cardIndex === midpoint && (
@@ -540,7 +540,7 @@ export default function List() {
                             <Image src={premium} alt="badge" className={styles.premium} />
                           </div>
                           <div className={styles.buttonContainer}>
-                            {data.images.map((image, i) => (
+                            {data.images.map((image: any, i: any) => (
                               <button
                                 key={i}
                                 onClick={() => handleImageChange(image, i + 1, cardIndex)}
@@ -563,7 +563,7 @@ export default function List() {
                           <div>
                             <p className={styles.subtitle}>Includes:</p>
                             <div className={styles.ul}>
-                              {data.details.map((detail, i) => (
+                              {data.details.map((detail: any, i: any) => (
                                 <div key={i} className={styles.ulinnerDiv}>
                                   <Image
                                     src={detail.icon}

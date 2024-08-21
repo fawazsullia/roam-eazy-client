@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import PackageCard from '../PackageCard/PackageCard';
 import styles from './TopPackages.module.css';
 import { axiosInstance } from '@/utils/axios.utils';
-import { IListing } from '@/interfaces/IListing.interface';
 import pkg1 from "../../assets/images/pkg1.jpg"
 import pkg2 from "../../assets/images/pkg2.jpg"
 import pkg3 from "../../assets/images/pkg3.jpg"
@@ -14,6 +13,7 @@ import flight from "../../assets/images/flight.svg"
 import insurance from "../../assets/images/Insurance.svg"
 import hotel from "../../assets/images/Hotel.svg"
 import transportation from "../../assets/images/Transportation.svg"
+import { IListing } from '@/inerfaces/IListing.interface';
 
 const TopPackages = () => {
     const defaultLimit = 6;

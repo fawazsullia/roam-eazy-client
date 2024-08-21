@@ -57,7 +57,8 @@ const FAQ: React.FC = () => {
     ];
 
     const handleFAQClick = (index: number) => {
-        setOpenIndex(openIndex === index ? null : index);
+        if(openIndex === index) return;
+        setOpenIndex(index);
     };
 
 

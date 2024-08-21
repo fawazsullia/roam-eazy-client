@@ -8,10 +8,10 @@ import Link from "next/link";
 interface IPackageCardProps {
     id: number;
     title: string;
-    bannerImage: string;
-    image1: string;
-    image2: string;
-    image3: string;
+    bannerImage?: any;
+    image1: any;
+    image2: any;
+    image3: any;
     price: string;
     details: { name: string, icon: string }[];
     verified: boolean;
@@ -21,7 +21,7 @@ const PackageCard = ({ id, image1, image2, image3, title, price, details, verifi
     const [currentImage, setCurrentImage] = useState(image1);
     const [activeButton, setActiveButton] = useState(1);
 
-    const handleImageChange = (image, index) => {
+    const handleImageChange = (image: any, index: any) => {
         setCurrentImage(image);
         setActiveButton(index);
     };
