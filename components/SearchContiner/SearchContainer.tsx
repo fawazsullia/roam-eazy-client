@@ -1,9 +1,18 @@
 import { Button, Col, DatePicker, Form, Select } from 'antd';
+
+import { useEffect, useRef, useState } from 'react'
+import { DateRange } from 'react-date-range'
+
+import format from 'date-fns/format'
+import { addDays, set } from 'date-fns'
+
+import 'react-date-range/dist/styles.css'
+import 'react-date-range/dist/theme/default.css'
 import styles from './SearchContainer.module.css';
-import { useEffect, useState } from 'react';
+
 import { axiosInstance } from '@/utils/axios.utils';
-import  Departing  from '../../icons/Departing.svg';
-import  Traveling  from '../../icons/Traveling.svg';
+import Departing from '../../icons/Departing.svg';
+import Traveling from '../../icons/Traveling.svg';
 import { useRouter } from 'next/router';
 import Image from "next/image";
 import { Place } from '@/inerfaces/Place.interface';
@@ -73,7 +82,39 @@ const SearchContainer = () => {
         const url = `/${selectedDeparture}-to-${selectedDestination}?start=${selectedDates[0]}&end=${selectedDates[1]}`;
         router.push(url);
     }
+    const [range, setRange] = useState([
+        {
+            startDate: new Date(),
+            endDate: addDays(new Date(), 7),
+            key: 'selection'
+        }
+    ])
 
+    // open close
+    const [open, setOpen] = useState(false)
+
+    // get the target element to toggle 
+    const refOne = useRef(null)
+
+    useEffect(() => {
+        // event listeners
+        document.addEventListener("click", hideOnClickOutside, true)
+    }, [])
+
+
+
+    // Hide on outside click
+    const hideOnClickOutside = (e) => {
+        // console.log(refOne.current)
+        // console.log(e.target)
+        if (refOne.current && !refOne.current.contains(e.target)) {
+            setOpen(false)
+        }
+    }
+    const toggleOpen = () => {
+        setOpen(!open);
+
+    };
     return (
         <div className={styles.container}>
             <div className={styles.searchContainer}>
@@ -84,8 +125,8 @@ const SearchContainer = () => {
 
                         <div className={styles.fromSelectDiv}>
                             <div className={styles.selectWithIcon}>
-                            <Image src={Departing} alt="slick-left" className={styles.icon} />
-                            
+                                <Image src={Departing} alt="slick-left" className={styles.icon} />
+
                                 <Select
                                     placeholder="Departure From"
                                     className={styles.select}
@@ -98,11 +139,11 @@ const SearchContainer = () => {
                                         (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                                     }
                                     onChange={(selected) => setSelectedDeparture(selected.value)}
-                                    
+
                                 />
                             </div>
                             <div className={styles.selectWithIcon}>
-                             <Image src={Traveling} alt="slick-left" className={styles.icon} />
+                                <Image src={Traveling} alt="slick-left" className={styles.icon} />
                                 <Select
                                     placeholder="Arrive To"
                                     className={styles.select}
@@ -117,13 +158,37 @@ const SearchContainer = () => {
                                     }}
                                     onChange={(selected) => setSelectedDestination(selected.value)}
                                 />
-                                
+
                             </div>
 
                         </div>
                         <div className={styles.fromButtonDiv}>
                             <div className={styles.formComponent}>
-                                <RangePicker placeholder={["Start Date", "End Date"]} className={styles.input} format='DD/MM/YYYY' onChange={handleDateSelection} />
+                                <div className={styles.calendarWrap}>
+
+                                    <input
+                                        value={`${format(range[0].startDate, "MM/dd/yyyy")} --> ${format(range[0].endDate, "MM/dd/yyyy")}`}
+                                        readOnly
+                                        className={styles.inputBox}
+                                        onClick={toggleOpen}  // Use the toggle function on click
+                                    />
+                                    <div ref={refOne} className={styles.outsideDiv}>
+                                        {open &&
+                                            <DateRange
+                                                onChange={item => setRange([item.selection])}
+                                                editableDateInputs={true}
+                                                moveRangeOnFirstSelection={false}
+                                                ranges={range}
+                                                months={1}
+                                                direction="vertical"
+                                                className={styles.calendarElement}
+                                            />
+                                        }
+                                    </div>
+
+                                </div>
+
+                                {/* <RangePicker placeholder={["Start Date", "End Date"]} className={styles.input} format='DD/MM/YYYY' onChange={handleDateSelection} /> */}
                             </div>
                             <div className={styles.formComponent}>
                                 <Button className={styles.searchBtn} onClick={handleSearchButtonClick}>Let's Go</Button>
