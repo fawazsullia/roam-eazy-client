@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from './PackageDetail.module.css';
+import Image from 'next/image';
 
 const PackageDetail = () => {
     const router = useRouter();
@@ -44,9 +45,9 @@ const PackageDetail = () => {
         <div className={styles.container}>
             <h1>{packageDetail.title}</h1>
             <div className={styles.images}>
-                <img src={packageDetail.image1} alt={packageDetail.title} className={styles.image} />
-                <img src={packageDetail.image2} alt={packageDetail.title} className={styles.image} />
-                <img src={packageDetail.image3} alt={packageDetail.title} className={styles.image} />
+                <Image src={packageDetail.image1} alt={packageDetail.title} className={styles.image} />
+                <Image src={packageDetail.image2} alt={packageDetail.title} className={styles.image} />
+                <Image src={packageDetail.image3} alt={packageDetail.title} className={styles.image} />
             </div>
             <h2>Price: {packageDetail.price}</h2>
             <h3>Includes:</h3>
