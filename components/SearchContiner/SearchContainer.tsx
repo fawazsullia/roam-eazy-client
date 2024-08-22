@@ -104,10 +104,10 @@ const SearchContainer = () => {
 
 
     // Hide on outside click
-    const hideOnClickOutside = (e) => {
+    const hideOnClickOutside = (e: any) => {
         // console.log(refOne.current)
         // console.log(e.target)
-        if (refOne.current && !refOne.current.contains(e.target)) {
+        if (refOne.current && !(refOne.current as any).contains(e.target)) {
             setOpen(false)
         }
     }
@@ -175,7 +175,7 @@ const SearchContainer = () => {
                                     <div ref={refOne} className={styles.outsideDiv}>
                                         {open &&
                                             <DateRange
-                                                onChange={item => setRange([item.selection])}
+                                                onChange={item => setRange([item.selection as any])}
                                                 editableDateInputs={true}
                                                 moveRangeOnFirstSelection={false}
                                                 ranges={range}
