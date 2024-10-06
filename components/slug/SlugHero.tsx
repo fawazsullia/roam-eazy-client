@@ -1,10 +1,15 @@
 import { Button, Col, DatePicker, Form, Input, Row } from 'antd';
 import styles from './SlugHero.module.css';
 
-const SlugHero = () => {
+interface IProps {
+  departure: string;
+  destination: string;
+}
+
+const SlugHero = (props: IProps) => {
   return (
     <div className={styles.heroContainer}>
-    <h1>Find your next holiday <br/> trip to Turkey</h1>
+    <h1>Find your next holiday <br/> trip from {props.departure} to {props.destination}</h1>
     </div>
   );
 }

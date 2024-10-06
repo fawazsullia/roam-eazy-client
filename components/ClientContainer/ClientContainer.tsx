@@ -30,7 +30,7 @@ const ClientContainer: React.FC<IClientContainerProps> = ({ children }) => {
                             <div className={styles.line}></div>
                             <div className={styles.line}></div>
                         </div>
-                        <div className={styles.logo}>ROAMEAZY</div>
+                        <div className={styles.logo}><a href='/' style={{ textDecoration: "none", color: "black" }}>ROAMEAZY</a></div>
                     </div>
                     <ul className={`${styles.navLinks} ${isMobileMenuOpen ? styles.open : ''}`}>
                         <li><a href="/" className={router.pathname === '/' ? styles.active : ''}>Home</a></li>
@@ -56,7 +56,7 @@ const ClientContainer: React.FC<IClientContainerProps> = ({ children }) => {
                             <div className={styles.leftinnerDiv}>
                                 <div className={styles.inner}>
                                     <h1 className={styles.logo}>ROAMEAZY</h1>
-                                    <p className={styles.innerp}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    <p className={styles.innerp}>Explore the World, One Package at a Time.</p>
                                     <h2 className={styles.h2heading}>Social</h2>
                                     <div>
                                         <span>
@@ -83,7 +83,7 @@ const ClientContainer: React.FC<IClientContainerProps> = ({ children }) => {
                         </div>
                         <div className={styles.rightDiv}>
                             <h2 className={styles.h2heading}>Contact</h2>
-                            <div className={styles.information}>Email: Hello@roameazy.com</div>
+                            <div className={styles.information}>Email: hello@roameazy.com</div>
                             <div className={styles.information}>Contact: +971512345678</div>
                             <div className={styles.information}>Address: office 123, Street ABCDEF, Emirate, UAE</div>
                             <div className={styles.locationimageOut}>

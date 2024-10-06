@@ -2,18 +2,8 @@ import { useEffect, useState } from 'react';
 import PackageCard from '../PackageCard/PackageCard';
 import styles from './TopPackages.module.css';
 import { axiosInstance } from '@/utils/axios.utils';
-import pkg1 from "../../assets/images/pkg1.jpg"
-import pkg2 from "../../assets/images/pkg2.jpg"
-import pkg3 from "../../assets/images/pkg3.jpg"
-import pkg4 from "../../assets/images/pkg4.jpg"
-import pkg5 from "../../assets/images/pkg5.jpg"
-import pkg6 from "../../assets/images/pkg6.jpg"
-import night from "../../assets/images/nights.svg"
-import flight from "../../assets/images/flight.svg"
-import insurance from "../../assets/images/Insurance.svg"
-import hotel from "../../assets/images/Hotel.svg"
-import transportation from "../../assets/images/Transportation.svg"
 import { IListing } from '@/inerfaces/IListing.interface';
+import { Spin } from 'antd';
 
 const TopPackages = () => {
     const defaultLimit = 6;
@@ -29,8 +19,6 @@ const TopPackages = () => {
                 offset: 0,
                 limit,
                 isFeatured: true,
-                startDate: new Date().toISOString(),
-                endDate: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 30).toISOString(), // featured in 30 days bracket
             });
             setListings(results.data.listings);
         } catch (err) {
@@ -60,122 +48,40 @@ const TopPackages = () => {
         };
     }, []);
 
+
+
     useEffect(() => {
         (async function () {
             await fetchListings();
         })();
     }, [limit]);
 
-
-    const packages = [
-        {
-            id: 1,
-            title: "Turkey Holiday Package",
-            price: "AED 1999/-",
-            details: [{ name: '5 Nights', icon: night },
-            { name: 'Flight', icon: flight },
-            { name: 'Insurance', icon: insurance },
-            { name: 'Hotel', icon: hotel },
-            { name: 'Transportation', icon: transportation },],
-            verified: true,
-            image1: pkg1,
-            image2: pkg2,
-            image3: pkg3,
-        },
-        {
-            id: 2,
-            title: "Seville Holiday Package",
-            price: "AED 1999/-",
-            details: [{ name: '5 Nights', icon: night },
-            { name: 'Flight', icon: flight },
-            { name: 'Insurance', icon: insurance },
-            { name: 'Hotel', icon: hotel },
-            { name: 'Transportation', icon: transportation },],
-            verified: true,
-            image1: pkg2,
-            image2: pkg3,
-            image3: pkg4,
-        },
-        {
-            id: 3,
-            title: "Sydney Holiday Package",
-            price: "AED 1999/-",
-            details: [{ name: '5 Nights', icon: night },
-            { name: 'Flight', icon: flight },
-            { name: 'Insurance', icon: insurance },
-            { name: 'Hotel', icon: hotel },
-            { name: 'Transportation', icon: transportation },],
-            verified: true,
-            image1: pkg3,
-            image2: pkg4,
-            image3: pkg5,
-        },
-        {
-            id: 4,
-            title: "Barcelona Holiday Package",
-            price: "AED 1999/-",
-            details: [{ name: '5 Nights', icon: night },
-            { name: 'Flight', icon: flight },
-            { name: 'Insurance', icon: insurance },
-            { name: 'Hotel', icon: hotel },
-            { name: 'Transportation', icon: transportation },],
-            verified: true,
-            image1: pkg4,
-            image2: pkg5,
-            image3: pkg6,
-        },
-        {
-            id: 5,
-            title: "Toronto Holiday Package",
-            price: "AED 1999/-",
-            details: [{ name: '5 Nights', icon: night },
-            { name: 'Flight', icon: flight },
-            { name: 'Insurance', icon: insurance },
-            { name: 'Hotel', icon: hotel },
-            { name: 'Transportation', icon: transportation },],
-            verified: true,
-            image1: pkg5,
-            image2: pkg6,
-            image3: pkg1,
-        },
-        {
-            id: 6,
-            title: "Bangkok Holiday Package",
-            price: "AED 1999/-",
-            details: [{ name: '5 Nights', icon: night },
-            { name: 'Flight', icon: flight },
-            { name: 'Insurance', icon: insurance },
-            { name: 'Hotel', icon: hotel },
-            { name: 'Transportation', icon: transportation },],
-            verified: true,
-            image1: pkg6,
-            image2: pkg1,
-            image3: pkg2,
-        },
-    ];
-
     return (
         <div className={styles.container}>
             <h2>Top Packages</h2>
-            <div className={styles.cardsContainer}>
-                {
-                    packages.slice(0, limit).map((item, index) => (
-                        <PackageCard
-                            id={item.id}
-                            image1={item.image1}
-                            image2={item.image2}
-                            image3={item.image3}
-                            title={item.title}
-                            price={item.price}
-                            details={item.details}
-                            verified={item.verified}
-                            key={index}
-                        />
-                    ))
-                }
-            </div>
-            <a href="/slug/listings?departure=someDeparture&destination=someDestination">
-                <button className={styles.seeAllButton}>See all →</button></a>
+            {
+                isListingLoading ? <div><Spin /></div> : (<div className={styles.cardsContainer}>
+                    {
+                        listings.slice(0, limit).map((item, index) => (
+                            <PackageCard
+                                id={item.listingId}
+                                key={item.listingId}
+                                title={item.title}
+                                price={item.price}
+                                verified={item.isVerified}
+                                travelInsurance={item.travelInsurance}
+                                hotels={item.hotels}
+                                airPortTransfers={item.airPortTransfers}
+                                numberOfNights={item.numberOfNights}
+                                images={item.images}
+                                airTickets={item.airTickets}
+
+                            />
+                        ))
+                    }
+                </div>)}
+            <a href="/packages/featured" target='_blank'>
+                <button className={styles.seeAllButton}>See all</button></a>
         </div>
     );
 }

@@ -3,9 +3,10 @@ import Image from "next/image";
 import cappadocia from "../../assets/images/cappadocia.svg"
 import pamukkale from "../../assets/images/pamukkale.svg"
 import bosphorus from "../../assets/images/bosphorus.svg"
+import { generateListingLink } from '@/utils/link-generation.utils';
 
 export default function About() {
-  
+
     return (
         <div className={styles.container}>
             <div className={styles.background}>
@@ -16,10 +17,10 @@ export default function About() {
                 <div className={styles.aboutComponent}>
                     <div className={styles.aboutSecondDiv}>
                         <div className={styles.aboutSides}>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's
-                                standard dummy text ever since the 1500s.</p>
-                                <a href="/slug/listings?departure=someDeparture&destination=someDestination">
+                            <p>Uncover the beauty of Turkey, from the stunning landscapes of Cappadocia to the ancient ruins of Ephesus. Indulge in delicious cuisine and vibrant culture while exploring picturesque cities and breathtaking coastlines.
+
+                                With our curated travel packages, planning your dream trip has never been easier. Book now and embark on an unforgettable adventure in Turkey!</p>
+                            <a href={generateListingLink('uae', 'turkey')} target='_blank'>
                                 <button className={styles.seeAllButton}>See all →</button></a>
                         </div>
                         <div className={styles.aboutSides}>
@@ -41,7 +42,7 @@ export default function About() {
                     </div>
                 </div>
             </div>
-            
+
         </div>
     );
 }

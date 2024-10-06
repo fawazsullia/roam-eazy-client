@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    padding: 20px;
+    border: 1px solid #e5e5e5;
+}
+
+.heading {
+    font-family: 'Poppins';
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 44px;
+    text-align: center;
+}
+
+.listItem {
+    font-size: 1.1rem;
+}

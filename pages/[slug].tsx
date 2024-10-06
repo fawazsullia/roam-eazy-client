@@ -2,23 +2,17 @@ import ClientContainer from "@/components/ClientContainer/ClientContainer";
 import FooterSearch from "@/components/FooterSearch/FooterSearch";
 import FAQ from "@/components/Home/FAQ";
 import Subscribe from "@/components/Home/Subscribe/Subscribe";
-import SlugHero from "./SlugHero";
-import AboutTurkey from "./AboutTurkey";
-import List from "./List";
 import { axiosInstance } from "@/utils/axios.utils";
-import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { IListing } from "@/inerfaces/IListing.interface";
 import { IGetListingApi } from "@/inerfaces/IGetListingApi.interface";
+import SlugHero from "@/components/slug/SlugHero";
+import List from "@/components/slug/List";
+import AboutTurkey from "@/components/slug/AboutTurkey";
 
-
-export default function Listings() {
-  const searchParams = useSearchParams();
-  const departure = searchParams.get('departure');
-  const destination = searchParams.get('destination');
-
-  const startFromParams = searchParams.get('start');
-  const endFromParams = searchParams.get('end');
+export default function Listings(props: any) {
+  const { departure, destination } = props;
 
   const LIMIT = 10;
 
@@ -84,6 +78,9 @@ export default function Listings() {
   }
 
   useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const startFromParams = urlParams.get('start');
+    const endFromParams = urlParams.get('end');
     if (!departure || !destination) {
       setListingError("Departure and destination are required");
       return;
@@ -127,8 +124,8 @@ export default function Listings() {
     setEndDate(date);
   };
 
-  const handleLoadMore = () => {
-    setOffset(offset + LIMIT);
+  const handleLoadMore = (offsetParam: number) => {
+    setOffset(offsetParam + LIMIT);
   };
 
   const handleSort = (sortKey?: string, sortOrder?: "ASC" | "DESC") => {
@@ -143,11 +140,78 @@ export default function Listings() {
   return (
     <ClientContainer>
       <main>
-        <SlugHero/>
-        <List/>
-        <AboutTurkey/>
-        <FAQ/>
+        <SlugHero departure={departure} destination={destination} />
+        <List destination={destination} 
+          handleLoadMore={handleLoadMore} 
+          handleSort={handleSort} 
+          listings={listings} 
+          totalListings={totalListings}
+          minBudget={minBudget}
+          maxBudget={maxBudget}
+          setMinBudget={setMinBudget}
+          setMaxBudget={setMaxBudget}
+          minNights={minNights}
+          maxNights={maxNights}
+          setMinNights={setMinNights}
+          setMaxNights={setMaxNights}
+          flightStatus={flightStatus}
+          setFlightStatus={setFlightStatus}
+          loading={loading}
+          flightOptions={flightOptions}
+          listingError={listingError}
+           />
+        <AboutTurkey />
+        <FAQ />
       </main>
     </ClientContainer>
   );
 }
+
+export const getStaticPaths = async () => {
+  console.log("inside static [paths00")
+  const departings = await axiosInstance.post('/api/place/get-departing', {
+    limit: 200,
+    offset: 0
+  });
+  const destinations = await axiosInstance.post('/api/place/get-destination', {
+    limit: 200,
+    offset: 0
+  });
+
+  const departinsData = departings.data;
+  const destinationsData = destinations.data;
+
+  const paths: { params: { slug: string; departure: string; destination: string; } }[] = [];
+
+  for (let i = 0; i < departinsData.length; i++) {
+    for (let j = 0; j < destinationsData.length; j++) {
+      if (departinsData[i]?.placeId && destinationsData[j]?.placeId) {
+        paths.push({
+          params: {
+            slug: `${departinsData[i].placeId}-to-${destinationsData[j].placeId}`,
+            departure: departinsData[i].placeId,
+            destination: destinationsData[j].placeId
+          }
+        });
+      } else {
+        console.log('placeId not found', departinsData[i], destinationsData[j]);
+      }
+    }
+  }
+  console.log(paths, "paths")
+  return {
+    paths,
+    fallback: false
+  };
+};
+
+export const getStaticProps = async (context: any) => {
+  const { slug } = context.params;
+  const [departure, destination] = slug.split('-to-');
+  return {
+    props: {
+      departure,
+      destination,
+    }
+  };
+};

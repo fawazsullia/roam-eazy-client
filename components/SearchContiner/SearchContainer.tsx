@@ -28,7 +28,13 @@ const SearchContainer = () => {
     const [destinationSearchValue, setDestinationSearchValue] = useState<string>('');
     const [selectedDeparture, setSelectedDeparture] = useState<string>('');
     const [selectedDestination, setSelectedDestination] = useState<string>('');
-    const [selectedDates, setSelectedDates] = useState<[string, string]>(['', '']);
+    const [range, setRange] = useState([
+        {
+            startDate: new Date(),
+            endDate: addDays(new Date(), 7),
+            key: 'selection'
+        }
+    ])
 
     useEffect(() => {
         console.log('Search Container Mounted');
@@ -70,25 +76,15 @@ const SearchContainer = () => {
         }
     }
 
-    const handleDateSelection = (dates: any, dateStrings: [string, string]) => {
-        setSelectedDates(dateStrings);
-    }
-
     const handleSearchButtonClick = () => {
-        if (!selectedDeparture || !selectedDestination || !selectedDates[0] || !selectedDates[1]) {
+        console.log(selectedDeparture, selectedDestination, range, "================")
+        if (!selectedDeparture || !selectedDestination || !range[0]) {
             alert('Please select all fields');
             return;
         }
-        const url = `/${selectedDeparture}-to-${selectedDestination}?start=${selectedDates[0]}&end=${selectedDates[1]}`;
+        const url = `/${selectedDeparture}-to-${selectedDestination}?start=${range[0].startDate}&end=${range[0].endDate}`;
         router.push(url);
     }
-    const [range, setRange] = useState([
-        {
-            startDate: new Date(),
-            endDate: addDays(new Date(), 7),
-            key: 'selection'
-        }
-    ])
 
     // open close
     const [open, setOpen] = useState(false)
@@ -138,7 +134,7 @@ const SearchContainer = () => {
                                     filterOption={(input, option) =>
                                         (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                                     }
-                                    onChange={(selected) => setSelectedDeparture(selected.value)}
+                                    onChange={(selected) => {setSelectedDeparture(selected)}}
 
                                 />
                             </div>
@@ -156,7 +152,7 @@ const SearchContainer = () => {
                                     onSearch={(value) => {
                                         setDestinationSearchValue(value);
                                     }}
-                                    onChange={(selected) => setSelectedDestination(selected.value)}
+                                    onChange={(selected) => setSelectedDestination(selected)}
                                 />
 
                             </div>

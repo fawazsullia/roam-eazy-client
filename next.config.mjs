@@ -14,7 +14,16 @@ const nextConfig = {
     "rc-picker",
     "rc-tree",
     "rc-table",
-  ]
+  ],
+  images: {
+    remotePatterns: [
+      {
+          protocol: 'http',
+          hostname: 'localhost',
+          port: '8080',
+          pathname: '/api/resource/**',
+      },
+  ],  }
 };
 
 export default nextConfig;

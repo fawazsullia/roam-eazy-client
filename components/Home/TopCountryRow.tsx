@@ -1,10 +1,11 @@
 import React from 'react';
 import CustomSlick from '../CustomSlick/CustomSlick';
-const TopCountryRow = () => {
+import { PlaceWithCount } from '@/inerfaces/Place.interface';
+const TopCountryRow = (props: { topCountries: PlaceWithCount[] }) => {
    
       return (
         <div>
-          <CustomSlick/>
+          <CustomSlick topCountries={props.topCountries} />
         </div>
       );
     };
