@@ -109,7 +109,7 @@ const SimilarPackages = () => {
             image2: pkg4,
             image3: pkg5,
         },
-        
+
     ];
 
     return (
@@ -118,24 +118,26 @@ const SimilarPackages = () => {
             <div className={styles.cardsContainer}>
                 {
                     packages.slice(0, limit).map((item, index) => (
-                        <PackageCard
-                            id={item.id}
-                            image1={item.image1}
-                            image2={item.image2}
-                            image3={item.image3}
-                            title={item.title}
-                            price={item.price}
-                            details={item.details}
-                            verified={item.verified}
-                            key={index}
-                        />
+                        <></>
                     ))
                 }
 
             </div>
-          
+
         </div>
     );
 }
+
+{/* <PackageCard
+    id={item.id}
+    image1={item.image1}
+    image2={item.image2}
+    image3={item.image3}
+    title={item.title}
+    price={item.price}
+    details={item.details}
+    verified={item.verified}
+    key={index}
+/> */}
 
 export default SimilarPackages;
