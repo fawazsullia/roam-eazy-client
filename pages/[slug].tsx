@@ -1,18 +1,17 @@
 import ClientContainer from "@/components/ClientContainer/ClientContainer";
-import FooterSearch from "@/components/FooterSearch/FooterSearch";
 import FAQ from "@/components/Home/FAQ";
-import Subscribe from "@/components/Home/Subscribe/Subscribe";
 import { axiosInstance } from "@/utils/axios.utils";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { IListing } from "@/inerfaces/IListing.interface";
 import { IGetListingApi } from "@/inerfaces/IGetListingApi.interface";
 import SlugHero from "@/components/slug/SlugHero";
 import List from "@/components/slug/List";
 import AboutTurkey from "@/components/slug/AboutTurkey";
+import DestinationFlexContentContainer from "@/components/slug/AboutTurkey";
+import { Skeleton, Spin } from "antd";
 
 export default function Listings(props: any) {
-  const { departure, destination } = props;
+  const { departure, destination, content, faqArray } = props;
 
   const LIMIT = 10;
 
@@ -74,6 +73,7 @@ export default function Listings(props: any) {
     }
     const listings = await axiosInstance.post('/api/listing/get-listings', body);
     console.log(listings.data, "received listing");
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     return listings.data;
   }
 
@@ -141,10 +141,10 @@ export default function Listings(props: any) {
     <ClientContainer>
       <main>
         <SlugHero departure={departure} destination={destination} />
-        <List destination={destination} 
-          handleLoadMore={handleLoadMore} 
-          handleSort={handleSort} 
-          listings={listings} 
+        <List destination={destination}
+          handleLoadMore={handleLoadMore}
+          handleSort={handleSort}
+          listings={listings}
           totalListings={totalListings}
           minBudget={minBudget}
           maxBudget={maxBudget}
@@ -159,16 +159,15 @@ export default function Listings(props: any) {
           loading={loading}
           flightOptions={flightOptions}
           listingError={listingError}
-           />
-        <AboutTurkey />
-        <FAQ />
+        />
+        {content?.length && <DestinationFlexContentContainer content={content} />}
+        {faqArray && <FAQ faq={faqArray} />}
       </main>
     </ClientContainer>
   );
 }
 
 export const getStaticPaths = async () => {
-  console.log("inside static [paths00")
   const departings = await axiosInstance.post('/api/place/get-departing', {
     limit: 200,
     offset: 0
@@ -208,10 +207,23 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: any) => {
   const { slug } = context.params;
   const [departure, destination] = slug.split('-to-');
+  const { data } = await axiosInstance.post('/api/content/get', {
+    key: destination,
+    group: "destination-flex-content",
+  });
+  const content = data?.data?.content;
+  const { data: faqs } = await axiosInstance.post('/api/content/get', {
+    key: 'home',
+    group: 'faq'
+  });
+  let faqArray = faqs.data?.questionSet as Array<unknown>;
+  faqArray = faqArray.slice(0, 6)
   return {
     props: {
+      content,
       departure,
       destination,
+      faqArray
     }
   };
 };

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./List.module.css";
-import { Button, Empty } from "antd";
+import { Button, Empty, Spin } from "antd";
 import Image from "next/image";
 import badge from "../../assets/images/badge.svg";
 import premium from "../../assets/images/premium.svg";
@@ -92,7 +92,7 @@ export default function List(props: IProps) {
   // };
 
   const handleFlightChange = (e: any) => {
-    if(e.target.value !== flightStatus) setFlightStatus(e.target.value);
+    if (e.target.value !== flightStatus) setFlightStatus(e.target.value);
   };
 
   const handleBudgetChange = (value: any) => {
@@ -220,7 +220,7 @@ export default function List(props: IProps) {
           </div>
 
         )}
-        <div className={styles.cardDetail}>
+        {loading ? <Spin size="large" style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "30vh" }} /> : <div className={styles.cardDetail}>
           {/* Filter Button for Mobile */}
           {isMobile && (
             <div className={styles.filterOut}>
@@ -376,7 +376,7 @@ export default function List(props: IProps) {
                 </button>
               </div>
             </>)}
-        </div>
+        </div>}
       </div>
     </div>
   );

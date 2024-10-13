@@ -46,7 +46,7 @@
 }
 
 .mobileButtonContainer {
-display: none;
+    display: none;
 }
 
 .button {
@@ -72,6 +72,14 @@ display: none;
 
 }
 
+.callButton:hover {
+    cursor: pointer;
+}
+
+.whatsappButton:hover {
+    cursor: pointer;
+}
+
 .whatsappButton {
     min-width: 100px;
     background: linear-gradient(90deg, #20B038 0%, #20B038 100%);
@@ -85,23 +93,22 @@ display: none;
 
 @media (max-width: 480px) {
 
-    .buttonContainer {   
+    .buttonContainer {
         display: none;
     }
-    
+
     .mobileButtonContainer {
         display: grid;
         grid-template-columns: 1fr 1fr;
         width: 100%;
         gap: 20px;
-  position: fixed;
-  bottom: 6px;
-  left: 0px;
-  right: 0px;
-  scale: 0.8;
-  z-index: 999;
+        position: fixed;
+        bottom: 6px;
+        left: 0px;
+        right: 0px;
+        scale: 0.8;
+        z-index: 999;
     }
 
-    
-}  
 
+}

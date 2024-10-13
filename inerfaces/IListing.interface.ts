@@ -44,4 +44,6 @@ export interface IListing {
     "priceSingle": number;
     "images": string[];
     description: string;
+    overview?: string;
+    companyId: string;
 }

@@ -29,9 +29,9 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onClick }) 
     );
 };
 
-const FAQ = (props: { faq: { question: string; answer: string }[] }) => {
+const FAQ = (props: { faq?: { question: string; answer: string }[] }) => {
     const [openIndex, setOpenIndex] = useState<number>(0);
-
+    if(!props.faq) return <></>
     const { faq } = props;
 
     const handleFAQClick = (index: number) => {
@@ -44,7 +44,7 @@ const FAQ = (props: { faq: { question: string; answer: string }[] }) => {
         <div className={styles.container}>
             <div className={styles.faqContainer}>
                 <h1>FAQs</h1>
-                {faq.map((faq, index) => (
+                {faq?.map((faq, index) => (
                     <div key={index} className={styles.test}>
                         <FAQItem
                             question={faq.question}

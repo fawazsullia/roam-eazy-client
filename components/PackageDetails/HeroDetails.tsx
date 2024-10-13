@@ -1,10 +1,14 @@
-import { Button, Col, DatePicker, Form, Input, Row } from 'antd';
 import styles from './HeroDetails.module.css';
 
-const HeroDetails = () => {
+interface IProps {
+  destination: string;
+}
+
+const HeroDetails = (props: IProps) => {
+  const { destination } = props;
   return (
     <div className={styles.heroContainer}>
-    <h1>Explore the Georgia</h1>
+    <h1>Explore the {destination}</h1>
     </div>
   );
 }

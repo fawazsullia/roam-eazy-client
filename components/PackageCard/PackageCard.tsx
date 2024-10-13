@@ -9,6 +9,7 @@ import InsuranceIcon from "../../assets/images/Insurance.svg"
 import HotelIcon from "../../assets/images/Hotel.svg"
 import TransportIcon from "../../assets/images/Transportation.svg"
 import Link from "next/link";
+import { Config } from "@/config/base.config";
 
 interface IPackageCardProps {
     id: string;
@@ -36,7 +37,7 @@ const PackageCard = ({ id, images, title, price, verified, travelInsurance, hote
         <div className={styles.container}>
             <div className={styles.imageContainer}>
                 <Image
-                    src={`http://localhost:8080/api/resource?id=${currentImage}`}
+                    src={`${Config.imageBaseUrl}?id=${currentImage}`}
                     className={styles.image}
                     alt="card"
                     width={400}

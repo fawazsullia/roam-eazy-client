@@ -7,52 +7,62 @@ import SimilarPackages from '@/components/PackageDetails/SimilarPackages';
 import styles from './[id].module.css';
 import CardDetail from '@/components/PackageDetails/CardDetail/CardDetail';
 import Logoipsumcard from '@/components/PackageDetails/CardDetail/LogoipsumCard';
+import { IListing } from '@/inerfaces/IListing.interface';
+import { Spin } from 'antd';
+import { ICompany, ICompanyDetail } from '@/inerfaces/ICompany.interface';
 
 const PackageDetails = () => {
     const router = useRouter();
     const { id } = router.query;
-    const [packageDetails, setPackageDetails] = useState(null);
+    const [packageDetails, setPackageDetails] = useState<IListing | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [company, setCompany] = useState<ICompany & { details: ICompanyDetail } | null>(null);
+
+    const fetchPackageDetails = async () => {
+        try {
+            const result = await axiosInstance.get<IListing>(`/api/listing/get-package/${id}`);
+            const companyId = result.data.companyId;
+            const { data: company } = await axiosInstance.get<ICompany & { details: ICompanyDetail }>(`/api/company/${companyId}`);
+            setCompany(company);
+            setPackageDetails(result.data);
+        } catch (err) {
+            console.log(err);
+            setError('Failed to fetch package details');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        const fetchPackageDetails = async () => {
-            try {
-                const result = await axiosInstance.get(`/api/listing/get-package/${id}`);
-                setPackageDetails(result.data);
-            } catch (err) {
-                console.log(err);
-                setError('Failed to fetch package details');
-            } finally {
-                setLoading(false);
-            }
-        };
-
         if (id) {
-            fetchPackageDetails();
+            fetchPackageDetails()
         }
     }, [id]);
-
-    // if (loading) return <div>Loading...</div>;
-    // if (error) return <div>{error}</div>;
 
     return (
         <div className={styles.detailDiv}>
             <ClientContainer>
-                <HeroDetails />
-
-                <div className={styles.container}>
-                    <div className={styles.cardDetailDiv}>
-                        <div className={styles.cardDetail}>
-                            <CardDetail/>
-                        </div>
-                        <div className={styles.cardDetail}>
-                            <Logoipsumcard/>
+                {
+                    loading && <div><Spin /></div>
+                }
+                {
+                    error && <div>{error}</div>
+                }
+                {packageDetails && company && <div>
+                    <HeroDetails destination={packageDetails.to} />
+                    <div className={styles.container}>
+                        <div className={styles.cardDetailDiv}>
+                            <div className={styles.cardDetail}>
+                                <CardDetail listing={packageDetails} company={company} />
+                            </div>
+                            <div className={styles.cardDetail}>
+                                <Logoipsumcard company= {company} />
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <SimilarPackages />
+                    {/* <SimilarPackages /> */}
+                </div>}
             </ClientContainer>
 
         </div>
