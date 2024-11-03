@@ -1,38 +1,54 @@
 'use client'
 import styles from "./LogoipsumCard.module.css";
 import Image from "next/image";
-import logoipsum from "../../../icons/logoipsum.svg"
 import call from "../../../icons/callicon.svg"
 import whatsapp from "../../../icons/whatsappicon.svg"
-export default function LogoipsumCard() {
+import { ICompany, ICompanyDetail } from "@/inerfaces/ICompany.interface";
+import { Avatar, Button, Tooltip } from "antd";
+
+interface ILogoIpsumCardProps {
+    company: ICompany & { details: ICompanyDetail };
+}
+
+const handleSubmitClick = (context: "whatsapp" | "call") => {
+
+}
+
+export default function LogoipsumCard(props: ILogoIpsumCardProps) {
+    const { company } = props;
     return (
         <>
-        <div className={styles.searchContainer}>
-            <div className={styles.logo}>
-                <Image src={logoipsum} alt="Logoipsum" className={styles.image} /><h4>Logoipsum</h4>
-            </div>
-            <div className={styles.content}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis.
-            </div>
-            <div className={styles.buttonContainer}>
-                <div className={styles.callButton}>  <Image src={call} alt="Logoipsum" className={styles.image} />
-                    <a href="/" className={styles.button} >Call</a>
-                </div>
-                <div className={styles.whatsappButton}>  <Image src={whatsapp} alt="Logoipsum" className={styles.image} />
-                    <a href="/" className={styles.button}>Whatsapp</a>
-                </div>
-            </div>
+            <div className={styles.searchContainer}>
+                <div className={styles.logo}>
+                    {company.details.logo && <Image src={company.details.logo} alt="Logoipsum" className={styles.image} />}
+                    {!company.details.logo && <Tooltip title={company.name}><Avatar size={50}>{company.name}</Avatar></Tooltip>}
 
-           
-        </div>
-         <div className={styles.mobileButtonContainer}>
+                    <h4>{company.name}</h4>
+                </div>
+                <div className={styles.content}>
+                    {
+                        company.details.description
+                    }
+                </div>
+                <div className={styles.buttonContainer}>
+                    <div className={styles.callButton}>  <Image src={call} alt="Logoipsum" className={styles.image} />
+                        <a onClick={() => handleSubmitClick("call")} className={styles.button} >Call</a>
+                    </div>
+                    <div className={styles.whatsappButton}>  <Image src={whatsapp} alt="Logoipsum" className={styles.image} />
+                        <a onClick={() => handleSubmitClick("whatsapp")} className={styles.button}>Whatsapp</a>
+                    </div>
+                </div>
+
+
+            </div>
+            <div className={styles.mobileButtonContainer}>
                 <div className={styles.callButton}>  <Image src={call} alt="Logoipsum" className={styles.image} />
-                    <a href="/" className={styles.button} >Call</a>
+                    <a onClick={() => handleSubmitClick("call")} className={styles.button} >Call</a>
                 </div>
                 <div className={styles.whatsappButton}>  <Image src={whatsapp} alt="Logoipsum" className={styles.image} />
-                    <a href="/" className={styles.button}>Whatsapp</a>
+                    <a onClick={() => handleSubmitClick("whatsapp")} className={styles.button}>Whatsapp</a>
                 </div>
             </div>
-            </>
+        </>
     );
 }

@@ -1,29 +1,30 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;  
-    padding: 0 70px;       
-    box-sizing: border-box; 
-    margin-top: 60px;
-    margin-bottom: 80px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 70px;
+  box-sizing: border-box;
+  margin-top: 60px;
+  margin-bottom: 80px;
+}
+
 .container h2 {
   font-family: 'Poppins';
-font-size: 40px;
-font-weight: 700;
-line-height: 44px;
-text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 44px;
+  text-align: center;
 
 }
+
 .cardsContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 100%;
-    max-width: 1270px;
-    gap: 30px;
- 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  max-width: 1270px;
+  gap: 30px;
+
 }
 
 .seeAllButton {
@@ -49,22 +50,23 @@ text-align: center;
     width: 100%;
     max-width: 1270px;
     gap: 30px;
-}
+  }
 
 
-.container h2 {
-  font-family: Poppins;
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 26.4px;
-  text-align: center;
-  margin-bottom: 40px;
-}
-.seeAllButton {
-  margin-top: 40px;
-}
+  .container h2 {
+    font-family: Poppins;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 26.4px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
 
-}  
+  .seeAllButton {
+    margin-top: 40px;
+  }
+
+}
 
 
 
@@ -73,18 +75,18 @@ text-align: center;
 
 @media (max-width: 700px) {
 
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;  
-      padding: 0 20px;        
-      margin-top: 40px;
-      margin-bottom: 60px;
-      box-sizing: border-box;
-    }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    box-sizing: border-box;
+  }
 
-    
-}  
+
+}
 
 
 
@@ -96,8 +98,8 @@ text-align: center;
     width: 100%;
     max-width: 1270px;
     gap: 30px;
- 
-}
+
+  }
 
 
 }

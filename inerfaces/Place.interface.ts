@@ -11,3 +11,7 @@ export interface Place {
     updatedAt: Date;
     isActive: boolean;
 }
+
+export interface PlaceWithCount extends Pick<Place, 'placeId' | 'name' | 'images'> {
+    count: number;
+}

@@ -40,39 +40,26 @@ const Testimonials = () => {
     const testimonials = [
         {
             image: avatar1,
-            name: "John Doe",
+            name: "Belal Ziya",
             role: "Traveler",
             rating: 5,
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
+            text: "Planning my trip was a breeze! I found a great Italy package, and the travel agency handled everything, from flights to hotels. The variety of packages is impressive. I’m already thinking about my next vacation!"
         },
         {
-            image: avatar2,
-            name: "Olivia Rograt",
+            image: avatar1,
+            name: "Yash",
             role: "Traveler",
             rating: 5,
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
+            text: "This site made booking my trip so easy! I found the perfect package and quickly connected with an agency that took care of everything. No stress, just a smooth experience. I’ll definitely use it again!"
         },
         {
-            image: avatar3,
-            name: "Julia Smith",
+            image: avatar1,
+            name: "Shahid Khan",
             role: "Traveler",
             rating: 5,
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
+            text: "I had such a smooth experience planning my Thailand trip. The package had everything I wanted, and the agency covered all the details. I’ve already recommended this site to my friends!"
         },
-        {
-            image: avatar3,
-            name: "Julia Smith",
-            role: "Traveler",
-            rating: 5,
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
-        },
-        {
-            image: avatar3,
-            name: "Julia Smith",
-            role: "Traveler",
-            rating: 5,
-            text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text."
-        }
+   
     ];
 
     return (

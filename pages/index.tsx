@@ -12,21 +12,35 @@ import Roameazy from "@/components/Home/Roameazy/Roameazy";
 import Subscribe from "@/components/Home/Subscribe/Subscribe";
 import Testimonials from "@/components/Testimonial/Testimonials";
 import FooterSearch from "@/components/FooterSearch/FooterSearch";
+import { axiosInstance } from "@/utils/axios.utils";
+import { PlaceWithCount } from "@/inerfaces/Place.interface";
+import HowToBook from "@/components/Home/Content/HowToBook";
 
-export default function Home(props: { title: string }) {
+interface IHomeProps {
+  title: string;
+  topCountries: PlaceWithCount[];
+  faq: {
+    question: string;
+    answer: string;
+  }[];
+  howItWorks: any;
+}
+
+export default function Home(props: IHomeProps) {
   return (
     <ClientContainer>
       <main>
         <Hero />
         <SearchContainer />
-        <TopCountryRow />
+        <TopCountryRow topCountries={props.topCountries} />
         <Banner image={BannerImage} />
         <TopPackages />
         <About />
         <Roameazy />
         <Testimonials />
-        <Subscribe />
-        <FAQ />
+        {/* <Subscribe /> */}
+        <HowToBook howTo={props.howItWorks}/>
+        <FAQ faq={props.faq} />
         <FooterSearch />
       </main>
     </ClientContainer>
@@ -34,9 +48,25 @@ export default function Home(props: { title: string }) {
 }
 
 export async function getStaticProps() {
+
+  const { data: topCountries } = await axiosInstance.post('/api/place/get-top-countries');
+  const { data: faqs } = await axiosInstance.post('/api/content/get', {
+    key: 'home',
+    group: 'faq'
+  });
+  const { data: howItWorks} = await axiosInstance.post('/api/content/get', {
+    key: 'home',
+    group: 'howitworks'
+  });
+  let faqArray = faqs.data?.questionSet as Array<unknown>;
+  faqArray = faqArray.slice(0, 6)
+
   return {
     props: {
       title: "RoamEazy",
+      topCountries,
+      faq: faqArray,
+      howItWorks: howItWorks.data
     },
   };
 }
