@@ -1,5 +1,5 @@
 export const Config = {
     baseUrl: 'http://localhost:8080',
     apiBaseUrl: 'http://localhost:8080/api',
-    imageBaseUrl: 'http://localhost:8080/api/resource',
+    imageBaseUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/api/resource`,
 }

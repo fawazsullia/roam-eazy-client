@@ -207,23 +207,36 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: any) => {
   const { slug } = context.params;
   const [departure, destination] = slug.split('-to-');
-  const { data } = await axiosInstance.post('/api/content/get', {
-    key: destination,
-    group: "destination-flex-content",
-  });
-  const content = data?.data?.content;
-  const { data: faqs } = await axiosInstance.post('/api/content/get', {
-    key: 'home',
-    group: 'faq'
-  });
-  let faqArray = faqs.data?.questionSet as Array<unknown>;
-  faqArray = faqArray.slice(0, 6)
-  return {
-    props: {
-      content,
-      departure,
-      destination,
-      faqArray
-    }
-  };
+  try {
+    const { data: place } = await axiosInstance.post('/api/place/get-place', {
+      placeId: destination
+    });
+    let destinationCountry = place.data.country;
+    destinationCountry = destinationCountry.replace(/\s/g, '-').toLowerCase();
+    const { data } = await axiosInstance.post('/api/content/get', {
+      key: destinationCountry,
+      group: "destination-flex-content",
+    });
+    const content = data?.data?.content;
+    const { data: faqs } = await axiosInstance.post('/api/content/get', {
+      key: destinationCountry,
+      group: 'faq'
+    });
+    let faqArray = faqs.data?.questionSet as Array<unknown>;
+    faqArray = faqArray.slice(0, 6)
+    return {
+      props: {
+        content,
+        departure,
+        destination,
+        faqArray
+      }
+    };
+  } catch (error) {
+    console.log(error, "error")
+    return {
+      notFound: true,
+      revalidate: true
+    };
+  }
 };
