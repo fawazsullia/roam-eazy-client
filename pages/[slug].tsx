@@ -6,9 +6,7 @@ import { IListing } from "@/inerfaces/IListing.interface";
 import { IGetListingApi } from "@/inerfaces/IGetListingApi.interface";
 import SlugHero from "@/components/slug/SlugHero";
 import List from "@/components/slug/List";
-import AboutTurkey from "@/components/slug/AboutTurkey";
 import DestinationFlexContentContainer from "@/components/slug/AboutTurkey";
-import { Skeleton, Spin } from "antd";
 
 export default function Listings(props: any) {
   const { departure, destination, content, faqArray } = props;
@@ -235,8 +233,10 @@ export const getStaticProps = async (context: any) => {
   } catch (error) {
     console.log(error, "error")
     return {
-      notFound: true,
-      revalidate: true
-    };
+      props: {
+        departure,
+        destination
+      }
+    }
   }
 };
