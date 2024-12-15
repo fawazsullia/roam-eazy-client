@@ -7,9 +7,10 @@ interface IProps {
 }
 
 const SlugHero = (props: IProps) => {
+  const { departure, destination } = props;
   return (
     <div className={styles.heroContainer}>
-    <h1>Find your next holiday <br/> trip from {props.departure} to {props.destination}</h1>
+    <h1>Tour packages from {departure} to {destination}</h1>
     </div>
   );
 }

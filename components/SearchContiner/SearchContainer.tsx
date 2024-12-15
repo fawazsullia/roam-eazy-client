@@ -77,7 +77,6 @@ const SearchContainer = () => {
     }
 
     const handleSearchButtonClick = () => {
-        console.log(selectedDeparture, selectedDestination, range, "================")
         if (!selectedDeparture || !selectedDestination || !range[0]) {
             alert('Please select all fields');
             return;
@@ -114,7 +113,7 @@ const SearchContainer = () => {
     return (
         <div className={styles.container}>
             <div className={styles.searchContainer}>
-                <h1>Explore beautiful places in the world with Roameazy</h1>
+                <h1>Discover the Best Tour and Holiday Packages from UAE</h1>
 
                 <Form layout='inline' className={styles.form}>
                     <div className={styles.formComponents}>

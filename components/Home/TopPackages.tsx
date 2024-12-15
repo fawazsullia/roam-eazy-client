@@ -5,8 +5,14 @@ import { axiosInstance } from '@/utils/axios.utils';
 import { IListing } from '@/inerfaces/IListing.interface';
 import { Spin } from 'antd';
 
-const TopPackages = () => {
-    const defaultLimit = 6;
+interface ITopPackagesProps {
+    isPage?: boolean;
+}
+
+const TopPackages = (props: ITopPackagesProps) => {
+    const { isPage } = props;
+    const isPageLimit = 12;
+    const defaultLimit = isPage ? isPageLimit : 6;
     const [limit, setLimit] = useState<number>(defaultLimit);
     const [listings, setListings] = useState<IListing[]>([]);
     const [isListingLoading, setIsListingLoading] = useState(false);
@@ -18,7 +24,7 @@ const TopPackages = () => {
             const results = await axiosInstance.post('/api/listing/get-listings', {
                 offset: 0,
                 limit,
-                isFeatured: true,
+                isTopPackage: true,
             });
             setListings(results.data.listings);
         } catch (err) {
@@ -32,9 +38,9 @@ const TopPackages = () => {
     useEffect(() => {
         const updateLimit = () => {
             if (window.innerWidth < 559) {
-                setLimit(3);
+                setLimit(isPage ? isPageLimit : 3);
             } else if (window.innerWidth < 900) {
-                setLimit(4);
+                setLimit(isPage ? isPageLimit : 4);
             } else {
                 setLimit(defaultLimit);
             }
@@ -58,7 +64,7 @@ const TopPackages = () => {
 
     return (
         <div className={styles.container}>
-            <h2>Top Packages</h2>
+            <h2>Top Tour Packages</h2>
             {
                 isListingLoading ? <div><Spin /></div> : (<div className={styles.cardsContainer}>
                     {
@@ -80,8 +86,8 @@ const TopPackages = () => {
                         ))
                     }
                 </div>)}
-            <a href="/packages/featured" target='_blank'>
-                <button className={styles.seeAllButton}>See all</button></a>
+            { !isPage && <a href="/packages/top-tour-packages" target='_blank'>
+                <button className={styles.seeAllButton}>See all</button></a>}
         </div>
     );
 }

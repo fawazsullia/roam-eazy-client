@@ -15,6 +15,9 @@ import FooterSearch from "@/components/FooterSearch/FooterSearch";
 import { axiosInstance } from "@/utils/axios.utils";
 import { PlaceWithCount } from "@/inerfaces/Place.interface";
 import HowToBook from "@/components/Home/Content/HowToBook";
+import ContentWrapper from "@/components/Home/ContentWrapper/ContentWrapper";
+import { Space } from "antd";
+import Head from "next/head";
 
 interface IHomeProps {
   title: string;
@@ -28,22 +31,31 @@ interface IHomeProps {
 
 export default function Home(props: IHomeProps) {
   return (
-    <ClientContainer>
-      <main>
-        <Hero />
-        <SearchContainer />
-        <TopCountryRow topCountries={props.topCountries} />
-        <Banner image={BannerImage} />
-        <TopPackages />
-        <About />
-        <Roameazy />
-        <Testimonials />
-        {/* <Subscribe /> */}
-        <HowToBook howTo={props.howItWorks}/>
-        <FAQ faq={props.faq} />
-        <FooterSearch />
-      </main>
-    </ClientContainer>
+    <>
+      <Head>
+        <title>Discover Tour and Holiday Packages from UAE | Roam Eazy</title>
+        <meta name="description" content="RoamEazy is UAE's leading tour and holiday packages marketplace. We make it easy for you to browse and book packages, so that you can go on your vacation worry free" />
+      </Head>
+      <ClientContainer>
+        <main>
+          <Hero />
+          <SearchContainer />
+          <TopCountryRow topCountries={props.topCountries} />
+          {/* <Banner image={BannerImage} /> */}
+          <br></br>
+          <br></br>
+          <ContentWrapper />
+          <TopPackages />
+          <About />
+          <Roameazy />
+          <Testimonials />
+          {/* <Subscribe /> */}
+          <HowToBook howTo={props.howItWorks} />
+          <FAQ faq={props.faq} />
+          <FooterSearch />
+        </main>
+      </ClientContainer>
+    </>
   );
 }
 
@@ -54,7 +66,7 @@ export async function getStaticProps() {
     key: 'home',
     group: 'faq'
   });
-  const { data: howItWorks} = await axiosInstance.post('/api/content/get', {
+  const { data: howItWorks } = await axiosInstance.post('/api/content/get', {
     key: 'home',
     group: 'howitworks'
   });

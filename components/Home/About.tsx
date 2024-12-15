@@ -12,14 +12,12 @@ export default function About() {
             <div className={styles.background}>
                 <div className={styles.overlay}></div>
                 <div className={styles.aboutFirstDiv}>
-                    <h1>explore Turkey</h1>
+                    <h2>Discover the Best Tours and Travel Packages from UAE</h2>
                 </div>
                 <div className={styles.aboutComponent}>
                     <div className={styles.aboutSecondDiv}>
                         <div className={styles.aboutSides}>
-                            <p>Uncover the beauty of Turkey, from the stunning landscapes of Cappadocia to the ancient ruins of Ephesus. Indulge in delicious cuisine and vibrant culture while exploring picturesque cities and breathtaking coastlines.
-
-                                With our curated travel packages, planning your dream trip has never been easier. Book now and embark on an unforgettable adventure in Turkey!</p>
+                            <p>At Roameazy.com, we are committed to making your travel dreams come true. Roameazy.com is designed to bring you the best tour packages from the UAE from a variety of trusted travel companies.. Whether you're planning a relaxing holiday, an adventurous getaway, or a business trip, Roameazy.com is your one-stop destination for finding and comparing amazing deals tailored to your needs.</p>
                             <a href={generateListingLink('uae', 'turkey')} target='_blank'>
                                 <button className={styles.seeAllButton}>See all →</button></a>
                         </div>

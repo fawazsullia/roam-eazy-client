@@ -16,6 +16,7 @@ import cardlogo from "../../assets/images/Cardlogo.svg"
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { IListing } from "@/inerfaces/IListing.interface";
+import { CapitalizeFirstLetters } from "@/utils/string.utils";
 
 interface IProps {
   destination: string;
@@ -124,7 +125,7 @@ export default function List(props: IProps) {
   return (
     <div className={styles.container}>
 
-      <h2 className={styles.mainheading}>{destination} Packages</h2>
+      <h2 className={styles.mainheading}>{CapitalizeFirstLetters(destination)} holiday packages</h2>
       <div className={styles.cardDetailDiv}>
         {showFilters && (
           <div className={styles.cardDetail}>
@@ -208,13 +209,13 @@ export default function List(props: IProps) {
             </div>
             <div className={styles.bgimageDivq}>
               <div >
-                <h3 className={styles.heading}>Travel to ${destination}</h3>
-                <p className={styles.pra}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.
-                  eros tempus lacinia.
+                <h3 className={styles.heading}>Travel to {destination}</h3>
+                <p className={styles.pra}>Travel to {destination} with Roameazy and experience the best of {CapitalizeFirstLetters(destination)}. 
+                  We offer a wide range of holiday packages to suit every budget and preference. Whether you're looking for a relaxing beach holiday, a cultural city break, or an adventure-packed trip, we have something for everyone. 
+                  Our packages include flights, accommodation, transfers, and more, so all you have to do is sit back and enjoy your trip. Book your holiday to {destination} with Roameazy today and start planning your dream getaway! 
                   <br /><br />
-                  Morbi a eleifend magna. Nam metus lacus, porttitor eu mauris a, blandit ultrices nibh. Mauris sit amet magna non ligula vestibulum eleifend. .
                 </p>
-                <button className={styles.button}>Call to action</button>
+                {/* <button className={styles.button}>Call to action</button> */}
               </div>
             </div>
           </div>

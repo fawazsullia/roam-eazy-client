@@ -1,6 +1,6 @@
 .heroContainer {
     width: 100%;
-    height: 80vh;
+    height: 50vh;
     background: linear-gradient(180deg, #0081B0 7.54%, rgba(0, 0, 0, 0.178) 29.76%) ,  url('../../assets/images/slughero.jpg');
     background-position: center;
     background-size: cover;

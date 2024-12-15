@@ -9,6 +9,7 @@ import leftarrow from "../../icons/leftArrow.svg"
 import rightarrow from "../../icons/rightArrow.svg"
 import { PlaceWithCount } from "@/inerfaces/Place.interface";
 import { generateListingLink } from "@/utils/link-generation.utils";
+import { Config } from "@/config/base.config";
 
 function SampleNextArrow(props: any) {
   const { className, style, onClick } = props;
@@ -78,7 +79,7 @@ const CustomSlick = (props: { topCountries: PlaceWithCount[] }) => {
               return (
                 <div key={index} className={styles.countryCard} onClick={() => handleOnCountryClick(country)}>
                   <div className={styles.imageWrapper}>
-                    <Image src={`http://localhost:8080/api/resource/${country.images?.length ? country.images[0] : ''}`} width={100} height={100} alt={country.name} className={styles.image} />
+                    <Image src={`${Config.imageBaseUrl}?id=${country.images?.length ? country.images[0] : ''}`} width={100} height={100} alt={country.name} className={styles.image} />
                     <div className={styles.gradient}></div>
                   </div>
                   <div className={styles.info}>
@@ -97,7 +98,7 @@ const CustomSlick = (props: { topCountries: PlaceWithCount[] }) => {
                 <div key={index} className={styles['card-container']} onClick={() => handleOnCountryClick(country)}>
                   <div className={styles.card}>
                     <div className={styles.imageWrapper}>
-                      <Image src={`http://localhost:8080/api/resource/${country.images?.length ? country.images[0] : ''}`} width={100} height={100} alt={country.name} className={styles.image} />
+                      <Image src={`${Config.imageBaseUrl}?id=${country.images?.length ? country.images[0] : ''}`} width={100} height={100} alt={country.name} className={styles.image} />
                       <div className={styles.gradient}></div>
                     </div>
                     <div className={styles.textContainer}>

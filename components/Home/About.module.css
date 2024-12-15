@@ -38,12 +38,12 @@
     z-index: 3;
 }
 
-.aboutFirstDiv h1 {
-    margin-bottom: 30px !important;
+.aboutFirstDiv h2 {
+    margin-bottom: 20px !important;
     font-family: 'Poppins', sans-serif;
-    font-size: 82px;
+    font-size: 1.8 rem;
     font-weight: 700;
-    line-height: 104px;
+    line-height: 64px;
     text-align: left;
     color: var(--secondaryTextColor) !important;
     text-transform: uppercase;

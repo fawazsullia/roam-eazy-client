@@ -6,7 +6,8 @@ import { IListing } from "@/inerfaces/IListing.interface";
 import { IGetListingApi } from "@/inerfaces/IGetListingApi.interface";
 import SlugHero from "@/components/slug/SlugHero";
 import List from "@/components/slug/List";
-import DestinationFlexContentContainer from "@/components/slug/AboutTurkey";
+import DestinationFlexContentContainer from "@/components/slug/DestinationFlexContainer";
+import Head from "next/head";
 
 export default function Listings(props: any) {
   const { departure, destination, content, faqArray } = props;
@@ -136,6 +137,11 @@ export default function Listings(props: any) {
   }
 
   return (
+    <>
+    <Head>
+      <title>Tour packages from {departure} to {destination} | RoamEazy</title>
+      <meta name="description" content={`Find the best tour packages from ${departure} to ${destination}. Book now and enjoy your trip with RoamEazy`} />
+    </Head>
     <ClientContainer>
       <main>
         <SlugHero departure={departure} destination={destination} />
@@ -162,6 +168,7 @@ export default function Listings(props: any) {
         {faqArray && <FAQ faq={faqArray} />}
       </main>
     </ClientContainer>
+    </>
   );
 }
 
@@ -209,7 +216,7 @@ export const getStaticProps = async (context: any) => {
     const { data: place } = await axiosInstance.post('/api/place/get-place', {
       placeId: destination
     });
-    let destinationCountry = place.data.country;
+    let destinationCountry = place.country;
     destinationCountry = destinationCountry.replace(/\s/g, '-').toLowerCase();
     const { data } = await axiosInstance.post('/api/content/get', {
       key: destinationCountry,
