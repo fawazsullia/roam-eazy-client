@@ -16,6 +16,7 @@ import Traveling from '../../icons/Traveling.svg';
 import { useRouter } from 'next/router';
 import Image from "next/image";
 import { Place } from '@/inerfaces/Place.interface';
+import { generateListingLink } from '@/utils/link-generation.utils';
 const { RangePicker } = DatePicker;
 
 const SearchContainer = () => {
@@ -81,7 +82,7 @@ const SearchContainer = () => {
             alert('Please select all fields');
             return;
         }
-        const url = `/${selectedDeparture}-to-${selectedDestination}?start=${range[0].startDate}&end=${range[0].endDate}`;
+        const url = generateListingLink(selectedDeparture, selectedDestination, `start=${range[0].startDate}&end=${range[0].endDate}`);
         router.push(url);
     }
 
@@ -133,7 +134,7 @@ const SearchContainer = () => {
                                     filterOption={(input, option) =>
                                         (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                                     }
-                                    onChange={(selected) => {setSelectedDeparture(selected)}}
+                                    onChange={(selected) => { setSelectedDeparture(selected) }}
 
                                 />
                             </div>

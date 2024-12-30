@@ -1,3 +1,6 @@
+# sudo docker build -t fawazsullialabs/roam-eazy-ui:0.0.3 .
+
+
 # Step 1: Build the application
 FROM node:18-alpine AS builder
 

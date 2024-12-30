@@ -17,6 +17,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { IListing } from "@/inerfaces/IListing.interface";
 import { CapitalizeFirstLetters } from "@/utils/string.utils";
+import { Config } from "@/config/base.config";
 
 interface IProps {
   destination: string;
@@ -46,7 +47,6 @@ export default function List(props: IProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 8;
   const [sortOption, setSortOption] = useState("default");
-  const [currentImages, setCurrentImages] = useState([] || listings.map(data => data.images && data.images[0])) as any;
   const [activeButtons, setActiveButtons] = useState(listings.map(() => 1));
   // const [filterDeparture, setFilterDeparture] = useState("");
   // const [filterDestination, setFilterDestination] = useState("");
@@ -109,13 +109,13 @@ export default function List(props: IProps) {
   const midpoint = Math.floor(totalListings / 2);
 
   const handleImageChange = (image: any, index: any, cardIndex: any) => {
-    const newCurrentImages = [...currentImages];
-    newCurrentImages[cardIndex] = image;
-    setCurrentImages(newCurrentImages);
+    // const newCurrentImages = [...currentImages];
+    // newCurrentImages[cardIndex] = image;
+    // setCurrentImages(newCurrentImages);
 
-    const newActiveButtons = [...activeButtons];
-    newActiveButtons[cardIndex] = index;
-    setActiveButtons(newActiveButtons);
+    // const newActiveButtons = [...activeButtons];
+    // newActiveButtons[cardIndex] = index;
+    // setActiveButtons(newActiveButtons);
   };
 
   const toggleFilters = () => {
@@ -254,7 +254,7 @@ export default function List(props: IProps) {
                   {listings.map((data, cardIndex) => (
                     <div key={data._id}>
                       {/* Display heading after every 4 cards */}
-                      {cardIndex === midpoint && (
+                      {cardIndex === midpoint && listings.length > 4 && (
                         <div className={styles.dynamicDiv}>
 
                           <h3 className={styles.dynamicheading}>TURKEY</h3>
@@ -265,7 +265,7 @@ export default function List(props: IProps) {
                       <div className={styles.maincardDiv}>
                         <div className={styles.imageContainer}>
                           <Image
-                            src={currentImages[cardIndex].url}
+                            src={`${Config.imageBaseUrl}?id=${data.images[0]}`}
                             className={styles.image}
                             alt="card"
                             width={400}
@@ -273,14 +273,14 @@ export default function List(props: IProps) {
                             sizes="100vw"
                             style={{ width: "100%", height: "100%", borderRadius: "20px" }}
                           />
-                          <div className={styles.verifiedBadge}>
+                          {/* <div className={styles.verifiedBadge}>
                             <p>Verified</p>
                             <Image src={badge} alt="badge" className={styles.badge} />
                           </div>
                           <div className={styles.PremiumBadge}>
                             <p> Premium </p>
                             <Image src={premium} alt="badge" className={styles.premium} />
-                          </div>
+                          </div> */}
                           <div className={styles.buttonContainer}>
                             {data.images.map((image: any, i: any) => (
                               <button
@@ -350,7 +350,7 @@ export default function List(props: IProps) {
                           <div className={styles.endContainer}>
                             <div>
                               <div className={styles.twin}>
-                                AED {data.price} <span>Per person on Twin Sharing</span>
+                                AED {data.basePrice} <span>Per person on Twin Sharing</span>
                               </div>
                             </div>
 

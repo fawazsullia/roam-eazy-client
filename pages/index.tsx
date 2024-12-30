@@ -16,7 +16,6 @@ import { axiosInstance } from "@/utils/axios.utils";
 import { PlaceWithCount } from "@/inerfaces/Place.interface";
 import HowToBook from "@/components/Home/Content/HowToBook";
 import ContentWrapper from "@/components/Home/ContentWrapper/ContentWrapper";
-import { Space } from "antd";
 import Head from "next/head";
 
 interface IHomeProps {

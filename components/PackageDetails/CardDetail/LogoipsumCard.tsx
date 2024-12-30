@@ -5,19 +5,28 @@ import call from "../../../icons/callicon.svg"
 import whatsapp from "../../../icons/whatsappicon.svg"
 import { ICompany, ICompanyDetail } from "@/inerfaces/ICompany.interface";
 import { Avatar, Button, Tooltip } from "antd";
+import ContactAgencyPopup from "@/components/ContactAgencyPopup/ContactAgencyPopup";
+import { useState } from "react";
 
 interface ILogoIpsumCardProps {
     company: ICompany & { details: ICompanyDetail };
 }
 
-const handleSubmitClick = (context: "whatsapp" | "call") => {
-
-}
-
 export default function LogoipsumCard(props: ILogoIpsumCardProps) {
     const { company } = props;
+    const [openContact, setOpenContact] = useState(false);
+
+    const handleSubmitClick = (context: "whatsapp" | "call") => {
+        setOpenContact(true);
+    }
+
+    const handleContactClose = () => {
+        setOpenContact(false);
+    }
+
     return (
         <>
+            <ContactAgencyPopup open={openContact} company={company} handleContactClose={handleContactClose}/>
             <div className={styles.searchContainer}>
                 <div className={styles.logo}>
                     {company.details.logo && <Image src={company.details.logo} alt="Logoipsum" className={styles.image} />}

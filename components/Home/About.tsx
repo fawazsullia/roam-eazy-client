@@ -25,22 +25,21 @@ export default function About() {
                             <div className={styles.imageDiv}>
                                 <div className={styles.imagecard}>
                                     <Image src={cappadocia} alt="Cappadocia" className={styles.image} />
-                                    <h2>Cappadocia</h2>
+                                    <h2>Armenia</h2>
                                 </div>
                                 <div className={styles.imagecard}>
                                     <Image src={pamukkale} alt="Pamukkale" className={styles.image} />
-                                    <h2>Pamukkale</h2>
+                                    <h2>Bali</h2>
                                 </div>
                                 <div className={styles.imagecard}>
                                     <Image src={bosphorus} alt="Bosphorus" className={styles.image} />
-                                    <h2>Bosphorus</h2>
+                                    <h2>London</h2>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 }

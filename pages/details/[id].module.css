@@ -7,6 +7,7 @@
   box-sizing: border-box;
   margin-top: 100px;
   margin-bottom: 80px;
+  min-height: 50vh;
 }
 
 .cardDetailDiv {

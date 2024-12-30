@@ -30,12 +30,14 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onClick }) 
 };
 
 const FAQ = (props: { faq?: { question: string; answer: string }[] }) => {
-    const [openIndex, setOpenIndex] = useState<number>(0);
-    if(!props.faq) return <></>
+    const [openIndex, setOpenIndex] = useState<number>(-1);
+    if (!props.faq) return <></>
     const { faq } = props;
 
     const handleFAQClick = (index: number) => {
-        if(openIndex === index) return;
+        if (openIndex === index) {
+            setOpenIndex(-1); return
+        };
         setOpenIndex(index);
     };
 

@@ -46,4 +46,5 @@ export interface IListing {
     description: string;
     overview?: string;
     companyId: string;
+    termsAndConditions?: string[];
 }

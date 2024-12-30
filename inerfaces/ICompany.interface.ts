@@ -21,4 +21,5 @@ export interface ICompanyDetail {
     createdAt: Date;
     tradeLicense: string;
     updatedAt: Date;
+    termsAndConditions?: string[];
 }

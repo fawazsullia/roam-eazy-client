@@ -6,8 +6,6 @@ import styles from './Testimonials.module.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import avatar1 from "../../assets/images/avatar1.png";
-import avatar2 from "../../assets/images/avatar2.png";
-import avatar3 from "../../assets/images/avatar3.png";
 
 const Testimonials = () => {
     const settings = {
@@ -43,7 +41,7 @@ const Testimonials = () => {
             name: "Belal Ziya",
             role: "Traveler",
             rating: 5,
-            text: "Planning my trip was a breeze! I found a great Italy package, and the travel agency handled everything, from flights to hotels. The variety of packages is impressive. I’m already thinking about my next vacation!"
+            text: "Planning my trip was a breeze! I found a great Italy package, and the travel agency handled everything, from flights to hotels. The variety of packages is impressive."
         },
         {
             image: avatar1,

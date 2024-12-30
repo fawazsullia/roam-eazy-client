@@ -8,6 +8,7 @@ import SlugHero from "@/components/slug/SlugHero";
 import List from "@/components/slug/List";
 import DestinationFlexContentContainer from "@/components/slug/DestinationFlexContainer";
 import Head from "next/head";
+import { generateListingLink } from "@/utils/link-generation.utils";
 
 export default function Listings(props: any) {
   const { departure, destination, content, faqArray } = props;
@@ -103,6 +104,7 @@ export default function Listings(props: any) {
       sortOrder
     )
       .then((data) => {
+        console.log(data, "data")
         setListings(data.listings);
         setTotalListings(data.total)
       })
@@ -138,80 +140,97 @@ export default function Listings(props: any) {
 
   return (
     <>
-    <Head>
-      <title>Tour packages from {departure} to {destination} | RoamEazy</title>
-      <meta name="description" content={`Find the best tour packages from ${departure} to ${destination}. Book now and enjoy your trip with RoamEazy`} />
-    </Head>
-    <ClientContainer>
-      <main>
-        <SlugHero departure={departure} destination={destination} />
-        <List destination={destination}
-          handleLoadMore={handleLoadMore}
-          handleSort={handleSort}
-          listings={listings}
-          totalListings={totalListings}
-          minBudget={minBudget}
-          maxBudget={maxBudget}
-          setMinBudget={setMinBudget}
-          setMaxBudget={setMaxBudget}
-          minNights={minNights}
-          maxNights={maxNights}
-          setMinNights={setMinNights}
-          setMaxNights={setMaxNights}
-          flightStatus={flightStatus}
-          setFlightStatus={setFlightStatus}
-          loading={loading}
-          flightOptions={flightOptions}
-          listingError={listingError}
-        />
-        {content?.length && <DestinationFlexContentContainer content={content} />}
-        {faqArray && <FAQ faq={faqArray} />}
-      </main>
-    </ClientContainer>
+      <Head>
+        <title>Tour packages from {departure} to {destination} | RoamEazy</title>
+        <meta name="description" content={`Find the best tour packages from ${departure} to ${destination}. Book now and enjoy your trip with RoamEazy`} />
+      </Head>
+      <ClientContainer>
+        <main>
+          <SlugHero departure={departure} destination={destination} />
+          <List destination={destination}
+            handleLoadMore={handleLoadMore}
+            handleSort={handleSort}
+            listings={listings}
+            totalListings={totalListings}
+            minBudget={minBudget}
+            maxBudget={maxBudget}
+            setMinBudget={setMinBudget}
+            setMaxBudget={setMaxBudget}
+            minNights={minNights}
+            maxNights={maxNights}
+            setMinNights={setMinNights}
+            setMaxNights={setMaxNights}
+            flightStatus={flightStatus}
+            setFlightStatus={setFlightStatus}
+            loading={loading}
+            flightOptions={flightOptions}
+            listingError={listingError}
+          />
+          {content?.length && <DestinationFlexContentContainer content={content} />}
+          {faqArray && <FAQ faq={faqArray} />}
+        </main>
+      </ClientContainer>
     </>
   );
 }
 
 export const getStaticPaths = async () => {
-  const departings = await axiosInstance.post('/api/place/get-departing', {
-    limit: 200,
-    offset: 0
-  });
-  const destinations = await axiosInstance.post('/api/place/get-destination', {
-    limit: 200,
-    offset: 0
-  });
+  const fetchAllData = async (endpoint: string, limit: number) => {
+    let offset = 0;
+    let results: any[] = [];
+    let hasMoreData = true;
 
-  const departinsData = departings.data;
-  const destinationsData = destinations.data;
+    while (hasMoreData) {
+      const response = await axiosInstance.post(endpoint, { limit, offset });
+      const data = response.data;
 
-  const paths: { params: { slug: string; departure: string; destination: string; } }[] = [];
+      if (data.length > 0) {
+        results = results.concat(data);
+        offset += limit;
+      } else {
+        hasMoreData = false;
+      }
+    }
 
-  for (let i = 0; i < departinsData.length; i++) {
-    for (let j = 0; j < destinationsData.length; j++) {
-      if (departinsData[i]?.placeId && destinationsData[j]?.placeId) {
+    return results;
+  };
+
+  // Fetch all departing and destination places
+  const departingsData = await fetchAllData('/api/place/get-departing', 200);
+  const destinationsData = await fetchAllData('/api/place/get-destination', 200);
+
+  // Generate paths
+  const paths: { params: { slug: string; departure: string; destination: string } }[] = [];
+
+  for (const departing of departingsData) {
+    for (const destination of destinationsData) {
+      if (departing?.placeId && destination?.placeId) {
         paths.push({
           params: {
-            slug: `${departinsData[i].placeId}-to-${destinationsData[j].placeId}`,
-            departure: departinsData[i].placeId,
-            destination: destinationsData[j].placeId
-          }
+            slug: generateListingLink(departing.placeId, destination.placeId),
+            departure: departing.placeId,
+            destination: destination.placeId,
+          },
         });
       } else {
-        console.log('placeId not found', departinsData[i], destinationsData[j]);
+        console.log('placeId not found', departing, destination);
       }
     }
   }
-  console.log(paths, "paths")
+
+
   return {
     paths,
-    fallback: false
+    fallback: false,
   };
 };
 
+
 export const getStaticProps = async (context: any) => {
   const { slug } = context.params;
-  const [departure, destination] = slug.split('-to-');
+  console.log(slug, "slug")
+  const [holiday, packages, from, departure, to, destination] = slug.split('-');
+  console.log(departure, destination, "departure and destination")
   try {
     const { data: place } = await axiosInstance.post('/api/place/get-place', {
       placeId: destination
@@ -228,7 +247,6 @@ export const getStaticProps = async (context: any) => {
       group: 'faq'
     });
     let faqArray = faqs.data?.questionSet as Array<unknown>;
-    faqArray = faqArray.slice(0, 6)
     return {
       props: {
         content,

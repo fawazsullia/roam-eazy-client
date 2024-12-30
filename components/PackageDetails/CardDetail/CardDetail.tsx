@@ -60,7 +60,7 @@ interface ICardDetailProps {
 }
 
 export default function CardDetail(props: ICardDetailProps) {
-    const { listing } = props;
+    const { listing, company } = props;
     const [activeTab, setActiveTab] = useState(0);
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -79,8 +79,8 @@ export default function CardDetail(props: ICardDetailProps) {
                     </div>
                 </div>
                 <div className={Styles.heading}>
-                    {listing.priceSingle && <h2>{listing.priceSingle}<span className={Styles.perPerson}> per person</span></h2>}
-                    <h5>{listing.price}<span className={Styles.twinSharing}> Twin Sharing</span></h5>
+                    {listing.basePriceSingle && <h2>{listing.basePriceSingle}<span className={Styles.perPerson}> AED per person</span></h2>}
+                    <h5>{listing.basePrice}<span className={Styles.twinSharing}> AED Twin Sharing</span></h5>
                 </div>
             </div>
 
@@ -217,7 +217,7 @@ export default function CardDetail(props: ICardDetailProps) {
             </Element>
 
             {
-                !listing.mealsIncluded?.length || !listing.travelInsurance || !listing.visa || !listing.hotels?.length || !listing.airTickets || !listing.tourGuide || !listing.airPortTransfers &&
+                (!listing.mealsIncluded?.length || !listing.travelInsurance || !listing.visa || !listing.hotels?.length || !listing.airTickets || !listing.tourGuide || !listing.airPortTransfers) &&
                 <Element name="exclusions" className={Styles.section}>
                     <h2>Exclusions</h2>
                     <ul>
@@ -232,16 +232,18 @@ export default function CardDetail(props: ICardDetailProps) {
                 </Element>
             }
 
-            <Element name="terms" className={Styles.section}>
+            {(listing.termsAndConditions || company.details.termsAndConditions) && <Element name="terms" className={Styles.section}>
                 <h2>Terms & Conditions</h2>
                 <ul>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero.</li>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                    {
+                        listing.termsAndConditions ? listing.termsAndConditions.map((term, index) => (
+                            <li key={index}>{term}</li>
+                        )) : company.details.termsAndConditions?.map((term, index) => (
+                            <li key={index}>{term}</li>
+                        ))
+                    }
                 </ul>
-            </Element>
+            </Element>}
         </>
     );
 }

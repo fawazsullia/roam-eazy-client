@@ -8,7 +8,7 @@ const HeroDetails = (props: IProps) => {
   const { destination } = props;
   return (
     <div className={styles.heroContainer}>
-    <h1>Explore the {destination}</h1>
+    {/* <h1>Explore the {destination}</h1> */}
     </div>
   );
 }

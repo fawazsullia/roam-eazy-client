@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { axiosInstance } from '@/utils/axios.utils';
 import ClientContainer from '@/components/ClientContainer/ClientContainer';
 import HeroDetails from '@/components/PackageDetails/HeroDetails';
-import SimilarPackages from '@/components/PackageDetails/SimilarPackages';
 import styles from './[id].module.css';
 import CardDetail from '@/components/PackageDetails/CardDetail/CardDetail';
 import Logoipsumcard from '@/components/PackageDetails/CardDetail/LogoipsumCard';
@@ -43,26 +42,27 @@ const PackageDetails = () => {
     return (
         <div className={styles.detailDiv}>
             <ClientContainer>
-                {
-                    loading && <div><Spin /></div>
-                }
-                {
-                    error && <div>{error}</div>
-                }
-                {packageDetails && company && <div>
-                    <HeroDetails destination={packageDetails.to} />
-                    <div className={styles.container}>
-                        <div className={styles.cardDetailDiv}>
+                <div>
+                    <HeroDetails destination={packageDetails?.to ?? '.....'} />
+
+                    {<div className={styles.container}>
+                        {
+                            loading && <div><Spin /></div>
+                        }
+                        {
+                            error && <div>{error}</div>
+                        }
+                        {packageDetails && company && <div className={styles.cardDetailDiv}>
                             <div className={styles.cardDetail}>
                                 <CardDetail listing={packageDetails} company={company} />
                             </div>
                             <div className={styles.cardDetail}>
-                                <Logoipsumcard company= {company} />
+                                <Logoipsumcard company={company} />
                             </div>
-                        </div>
-                    </div>
+                        </div>}
+                    </div>}
                     {/* <SimilarPackages /> */}
-                </div>}
+                </div>
             </ClientContainer>
 
         </div>
