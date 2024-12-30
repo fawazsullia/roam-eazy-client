@@ -16,6 +16,7 @@ const nextConfig = {
     "rc-table",
   ],
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
           protocol: 'http',
@@ -23,6 +24,11 @@ const nextConfig = {
           port: '8080',
           pathname: '/api/resource/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'roameazy.com',
+        pathname: '/api/resource/**',
+    },
   ],  }
 };
 
