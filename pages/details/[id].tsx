@@ -57,7 +57,7 @@ const PackageDetails = () => {
                                 <CardDetail listing={packageDetails} company={company} />
                             </div>
                             <div className={styles.cardDetail}>
-                                <Logoipsumcard company={company} />
+                                <Logoipsumcard company={company} listing={packageDetails} />
                             </div>
                         </div>}
                     </div>}

@@ -59,6 +59,7 @@
     text-decoration: none;
     margin-left: 10px;
     color: var(--secondaryTextColor) !important;
+    background-color: inherit;
 }
 
 .callButton {

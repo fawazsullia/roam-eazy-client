@@ -39,12 +39,9 @@ const PackageCard = ({ id, images, title, price, verified, travelInsurance, hote
                 <Image
                     src={`${Config.imageBaseUrl}?id=${currentImage}`}
                     className={styles.image}
-                    alt="card"
-                    width={400}
-                    height={200}
-                    sizes="100vw"
-                    style={{ width: '100%', height: '100%', borderRadius: '20px' }}
-                    layout="responsive"
+                    alt="package image"
+                    layout="fill"
+                    objectFit="cover"
                 />
                 <div className={styles.verifiedBadge}>
                     <p>Verified</p>

@@ -36,9 +36,9 @@ const ClientContainer: React.FC<IClientContainerProps> = ({ children }) => {
                         <li><a href="/" className={router.pathname === '/' ? styles.active : ''}>Home</a></li>
                         <li><a href="/about" className={router.pathname === '/about' ? styles.active : ''}>About Us</a></li>
                         <li><a href="/contact" className={router.pathname === '/contact' ? styles.active : ''}>Contact Us</a></li>
-                        <li><a href="/signup" className={styles.signUp}>Sign Up</a></li>
+                        {/* <li><a href="/signup" className={styles.signUp}>Sign Up</a></li> */}
                     </ul>
-                    <a href="/signup" className={`${styles.signUp} ${styles.mobile}`}>Sign Up</a>
+                    {/* <a href="/signup" className={`${styles.signUp} ${styles.mobile}`}>Sign Up</a> */}
                 </nav>
             </header>
 
