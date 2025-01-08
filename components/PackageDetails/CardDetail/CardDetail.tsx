@@ -176,18 +176,31 @@ export default function CardDetail(props: ICardDetailProps) {
                     </div>
                     <div className={Styles.tabContent}>
                         {
-                            listing.itinerary.map((iti, index) => {
+                            // listing.itinerary.map((iti, index) => {
+                            //     return (
+                            //         <div key={index} className={Styles.tabPane}>
+                            //             <h3>{iti.title}</h3>
+                            //             <ul>
+                            //                 {iti.description.map((desc, index) => (
+                            //                     <li key={index}>{desc}</li>
+                            //                 ))}
+                            //             </ul>
+                            //         </div>
+                            //     )
+                            // })
+                            listing.itinerary.filter((iti, index) => index === (activeTab)).map((iti, index) => {
                                 return (
                                     <div key={index} className={Styles.tabPane}>
                                         <h3>{iti.title}</h3>
                                         <ul>
                                             {iti.description.map((desc, index) => (
-                                                <li key={index}>{desc}</li>
+                                                <span key={index}>{desc}</span>
                                             ))}
                                         </ul>
                                     </div>
                                 )
-                            })
+                            }
+                            )
                         }
                     </div>
                 </div>
