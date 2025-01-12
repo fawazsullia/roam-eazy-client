@@ -23,9 +23,9 @@ export default function Listings(props: any) {
   const [listingError, setListingError] = useState<string | undefined>(undefined);
   const [flightStatus, setFlightStatus] = useState<'all' | 'included' | 'excluded'>('all');
   const [minBudget, setMinBudget] = useState<number>(0);
-  const [maxBudget, setMaxBudget] = useState<number>(9999999);
+  const [maxBudget, setMaxBudget] = useState<number>(25000);
   const [minNights, setMinNights] = useState<number>(0);
-  const [maxNights, setMaxNights] = useState<number>(9999999);
+  const [maxNights, setMaxNights] = useState<number>(15);
   const [totalListings, setTotalListings] = useState<number>(0);
   const [sortKey, setSortkey] = useState<string>("")
   const [sortOrder, setSortOrder] = useState<"ASC" | "DESC">("ASC")

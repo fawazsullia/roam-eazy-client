@@ -9,6 +9,7 @@ import ContactAgencyPopup from "@/components/ContactAgencyPopup/ContactAgencyPop
 import { useState } from "react";
 import { axiosInstance } from "@/utils/axios.utils";
 import { IListing } from "@/inerfaces/IListing.interface";
+import { Config } from "@/config/base.config";
 
 interface ILogoIpsumCardProps {
     company: ICompany & { details: ICompanyDetail };
@@ -85,7 +86,12 @@ export default function LogoipsumCard(props: ILogoIpsumCardProps) {
             <ContactAgencyPopup open={openContact} company={company} handleContactClose={handleContactClose} />
             <div className={styles.searchContainer}>
                 <div className={styles.logo}>
-                    {company.details.logo && <Image src={company.details.logo} alt="Logoipsum" className={styles.image} />}
+                    {company.details.logo && <Image src={`${Config.imageBaseUrl}?id=${company.details.logo}`} alt="Logoipsum" className={styles.image} 
+                        width={100}
+                        height={100}
+                        // sizes="100vw"
+                        />
+                        }
                     {!company.details.logo && <Tooltip title={company.name}><Avatar size={50}>{company.name}</Avatar></Tooltip>}
 
                     <h4>{company.name}</h4>
@@ -100,7 +106,7 @@ export default function LogoipsumCard(props: ILogoIpsumCardProps) {
                         <span className={styles.button} >{showPhoneNumber ? company.details.phone : 'Call'}</span>
                     </div>
                     <div className={styles.whatsappButton} onClick={() => handleSubmitClick("whatsapp")}>  <Image src={whatsapp} alt="Logoipsum" className={styles.image} />
-                        <span  className={styles.button}>Whatsapp</span>
+                        <span className={styles.button}>Whatsapp</span>
                     </div>
                 </div>
 

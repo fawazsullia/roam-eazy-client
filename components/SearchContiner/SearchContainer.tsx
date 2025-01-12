@@ -42,16 +42,89 @@ const SearchContainer = () => {
 
         (async function () {
             try {
-                const results = await axiosInstance.post('/api/place/get-departing', {
+                // const results = await axiosInstance.post('/api/place/get-departing', {
+                //     isDeparture: true,
+                //     limit: 50,
+                //     offset: 0
+                // });
+                setDepartingPlaces([{
+                    placeId: "uae",
+                    name: "UAE",
+                    country: "uae",
+                    type: "country",
+                    images: [],
                     isDeparture: true,
-                    limit: 50,
-                    offset: 0
-                });
-                setDepartingPlaces(results.data);
+                    isDestination: false,
+                    createdAt: new Date(),
+                    updatedAt: new Date(),
+                    isActive: true
+                }]);
             } catch (err) {
                 console.error(err, 'Error in fetching departing places');
             }
         })();
+
+        setDestinationPlaces([{
+            placeId: "georgia",
+            name: "Georgia",
+            country: "georgia",
+            type: "country",
+            images: [],
+            isDeparture: false,
+            isDestination: true,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            isActive: true
+        },
+        {
+            placeId: "thailand",
+            name: "Thailand",
+            country: "thailand",
+            type: "country",
+            images: [],
+            isDeparture: false,
+            isDestination: true,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            isActive: true
+        },
+        {
+            placeId: "maldives",
+            name: "Maldives",
+            country: "maldives",
+            type: "country",
+            images: [],
+            isDeparture: false,
+            isDestination: true,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            isActive: true
+        },
+        {
+            placeId: "turkey",
+            name: "Turkey",
+            country: "turkey",
+            type: "country",
+            images: [],
+            isDeparture: false,
+            isDestination: true,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            isActive: true
+        },
+        {
+            placeId: "azerbaijan",
+            name: "Azerbaijan",
+            country: "azerbaijan",
+            type: "country",
+            images: [],
+            isDeparture: false,
+            isDestination: true,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            isActive: true
+        }
+    ]);
 
     }, []);
 
@@ -68,6 +141,7 @@ const SearchContainer = () => {
         try {
             const results = await axiosInstance.post('/api/place/get-destination', {
                 searchTerm: value,
+                type: "country",
                 limit: 50,
                 offset: 0
             });

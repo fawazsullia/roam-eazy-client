@@ -84,7 +84,7 @@ const CustomSlick = (props: { topCountries: PlaceWithCount[] }) => {
                   </div>
                   <div className={styles.info}>
                     <h3>{country.name}</h3>
-                    <p>{country.count} Packages</p>
+                    {/* <p>{country.count} Packages</p> */}
                   </div>
                 </div>
               )
@@ -103,7 +103,7 @@ const CustomSlick = (props: { topCountries: PlaceWithCount[] }) => {
                     </div>
                     <div className={styles.textContainer}>
                       <h2 className={styles.title}>{country.name}</h2>
-                      <p className={styles.description}>{country.count} Packages</p>
+                      {/* <p className={styles.description}>{country.count} Packages</p> */}
                     </div>
                   </div>
                 </div>

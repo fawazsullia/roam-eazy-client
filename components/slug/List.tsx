@@ -125,7 +125,7 @@ export default function List(props: IProps) {
   return (
     <div className={styles.container}>
 
-      <h2 className={styles.mainheading}>{CapitalizeFirstLetters(destination)} holiday packages</h2>
+      <h2 className={styles.mainheading}>{CapitalizeFirstLetters(destination)} Holiday Packages</h2>
       <div className={styles.cardDetailDiv}>
         {showFilters && (
           <div className={styles.cardDetail}>
@@ -160,8 +160,8 @@ export default function List(props: IProps) {
                 <label htmlFor="budget" className={styles.label}>Budget: </label>
                 <Slider
                   range
-                  min={499}
-                  max={99999}
+                  min={0}
+                  max={25000}
                   defaultValue={[minBudget, maxBudget]}
                   onChange={handleBudgetChange}
                   trackStyle={[{ backgroundColor: '#DF6951' }]}

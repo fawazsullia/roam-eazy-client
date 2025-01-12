@@ -20,6 +20,11 @@ const ClientContainer: React.FC<IClientContainerProps> = ({ children }) => {
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
+
+    const handleNavigation = (url: string) => {
+        router.push(url);
+    }
+
     return (
         <div>
             <header className={styles.headerContainer}>
@@ -34,8 +39,8 @@ const ClientContainer: React.FC<IClientContainerProps> = ({ children }) => {
                     </div>
                     <ul className={`${styles.navLinks} ${isMobileMenuOpen ? styles.open : ''}`}>
                         <li><a href="/" className={router.pathname === '/' ? styles.active : ''}>Home</a></li>
-                        <li><a href="/about" className={router.pathname === '/about' ? styles.active : ''}>About Us</a></li>
-                        <li><a href="/contact" className={router.pathname === '/contact' ? styles.active : ''}>Contact Us</a></li>
+                        <li><a href="/about-us" className={router.pathname === '/about-us' ? styles.active : ''}>About Us</a></li>
+                        <li><a href="/contact-us" className={router.pathname === '/contact-us' ? styles.active : ''}>Contact Us</a></li>
                         {/* <li><a href="/signup" className={styles.signUp}>Sign Up</a></li> */}
                     </ul>
                     {/* <a href="/signup" className={`${styles.signUp} ${styles.mobile}`}>Sign Up</a> */}
@@ -73,8 +78,8 @@ const ClientContainer: React.FC<IClientContainerProps> = ({ children }) => {
                                 <div className={styles.inner}>
                                     <h2 className={styles.h2heading}>Quick Links</h2>
                                     <ul className={styles.innerul}>
-                                        <li>About us</li>
-                                        <li>Contact Us</li>
+                                        <li onClick={() => handleNavigation("/about-us")}>About us</li>
+                                        <li onClick={() => handleNavigation("/contact-us")}>Contact Us</li>
                                         <li>Popular Locations</li>
                                     </ul>
                                 </div>
@@ -84,15 +89,15 @@ const ClientContainer: React.FC<IClientContainerProps> = ({ children }) => {
                         <div className={styles.rightDiv}>
                             <h2 className={styles.h2heading}>Contact</h2>
                             <div className={styles.information}>Email: hello@roameazy.com</div>
-                            <div className={styles.information}>Contact: +971512345678</div>
-                            <div className={styles.information}>Address: office 123, Street ABCDEF, Emirate, UAE</div>
+                            <div className={styles.information}>Contact: +971527232654</div>
+                            <div className={styles.information}>Address: AlBarsha 1, Dubai, UAE</div>
                             <div className={styles.locationimageOut}>
                                 <Image src={location} alt="slick-left" className={styles.locationimage} />
                             </div>
                         </div>
                     </main>
                     <div className={styles.copyright}>
-                        <p>@Copyright RoamEazy 2024</p>
+                        <p>@Copyright RoamEazy 2025</p>
                     </div>
                 </div>
             </footer>
