@@ -192,11 +192,11 @@ export default function CardDetail(props: ICardDetailProps) {
                                 return (
                                     <div key={index} className={Styles.tabPane}>
                                         <h3>{iti.title}</h3>
-                                        <ul>
+                                        {iti.description?.length && Array.isArray(iti.description) && <ul>
                                             {iti.description.map((desc, index) => (
-                                                <span key={index}>{desc}</span>
+                                                <li key={index}>{desc}</li>
                                             ))}
-                                        </ul>
+                                        </ul>}
                                     </div>
                                 )
                             }
@@ -226,6 +226,11 @@ export default function CardDetail(props: ICardDetailProps) {
                             listing.airPortTransfers === "TWO_WAY" ? "Airport Transfers are included for both arrival and departure." : ""
                         }
                     </li>}
+                    {
+                       listing.customInclusions?.length && listing.customInclusions.map((inclusion, index) => (
+                            <li key={index}>{inclusion}</li>
+                        )) 
+                    }
                 </ul>
             </Element>
 
@@ -241,6 +246,11 @@ export default function CardDetail(props: ICardDetailProps) {
                         {!listing.airPortTransfers && <li>Airport Transfers are not included in the package.</li>}
                         {!listing.hotels?.length && <li>Hotels are not included in the package.</li>}
                         {!listing.mealsIncluded?.length && <li>Meals are not included in the package.</li>}
+                        {
+                            listing.customExclusions?.length && listing.customExclusions.map((exclusion, index) => (
+                                <li key={index}>{exclusion}</li>
+                            ))
+                        }
                     </ul>
                 </Element>
             }

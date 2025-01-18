@@ -24,8 +24,8 @@ const AboutUs = () => {
 
                         <Paragraph style={{ fontSize: "16px", lineHeight: "1.8", textAlign: "justify" }}>
                             Welcome to Our Company! We are dedicated to providing exceptional services
-                            that cater to your unique needs. Our mission is to empower businesses by
-                            delivering cutting-edge software solutions tailored to their industry.
+                            that cater to your unique needs. Our mission is to empower travellers by
+                            connecting them to relaible travel agencies.
                         </Paragraph>
 
                         <Paragraph style={{ fontSize: "16px", lineHeight: "1.8", textAlign: "justify" }}>
@@ -39,8 +39,8 @@ const AboutUs = () => {
                             <Col xs={24} sm={12} md={8}>
                                 <Card title="Our Mission" bordered={false}>
                                     <Paragraph style={{ fontSize: "14px", lineHeight: "1.6" }}>
-                                        To provide innovative and reliable software solutions that drive
-                                        growth and success for our clients.
+                                        To provide a platform where customers can seemlessly search and
+                                        and buy travel packages from reliable travel agencies.
                                     </Paragraph>
                                 </Card>
                             </Col>
@@ -48,8 +48,8 @@ const AboutUs = () => {
                             <Col xs={24} sm={12} md={8}>
                                 <Card title="Our Vision" bordered={false}>
                                     <Paragraph style={{ fontSize: "14px", lineHeight: "1.6" }}>
-                                        To be a global leader in software development, recognized for
-                                        excellence and customer satisfaction.
+                                        To be a global leader in the travel industry, ensuring quality and
+                                        and integrity.
                                     </Paragraph>
                                 </Card>
                             </Col>
@@ -66,7 +66,7 @@ const AboutUs = () => {
                     </Content>
 
                     <Footer style={{ textAlign: "center" }}>
-                        Our Company © {new Date().getFullYear()} - All Rights Reserved
+                        Roam Eazy © {new Date().getFullYear()} - All Rights Reserved
                     </Footer>
                 </Layout>
             </ClientContainer>

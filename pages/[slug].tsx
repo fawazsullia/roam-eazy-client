@@ -175,13 +175,24 @@ export default function Listings(props: any) {
 }
 
 export const getStaticPaths = async () => {
-  const fetchAllData = async (endpoint: string, limit: number) => {
+  const fetchAllData = async (endpoint: string, limit: number, type?: string) => {
     let offset = 0;
     let results: any[] = [];
     let hasMoreData = true;
 
     while (hasMoreData) {
-      const response = await axiosInstance.post(endpoint, { limit, offset });
+      const queryObj: {
+        limit: number;
+        offset: number;
+        type?: string;
+      } = {
+        limit,
+        offset,
+      };
+      if (type) {
+        queryObj['type'] = type;
+      }
+      const response = await axiosInstance.post(endpoint, queryObj);
       const data = response.data;
 
       if (data.length > 0) {
@@ -196,8 +207,10 @@ export const getStaticPaths = async () => {
   };
 
   // Fetch all departing and destination places
+  console.log('Fetching all departing and destination places');
   const departingsData = await fetchAllData('/api/place/get-departing', 200);
-  const destinationsData = await fetchAllData('/api/place/get-destination', 200);
+  const destinationsData = await fetchAllData('/api/place/get-destination', 200, "country");
+  console.log(departingsData, destinationsData, "departings and destinations")
 
   // Generate paths
   const paths: { params: { slug: string; departure: string; destination: string } }[] = [];
