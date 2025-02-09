@@ -117,7 +117,7 @@ export default function CardDetail(props: ICardDetailProps) {
                     />
                     <span>Insurance</span>
                 </div>}
-                {listing.hotels?.length && <div className={Styles.feature}>
+                {(listing.hotels && listing.hotels?.length !== 0) && <div className={Styles.feature}>
                     <Image
                         src={hotel}
                         alt="card"
@@ -129,7 +129,7 @@ export default function CardDetail(props: ICardDetailProps) {
                         src={transportation}
                         alt="card"
                     />
-                    <span>Transportation</span>
+                    <span>Transfers</span>
                 </div>}
             </div>
 
@@ -192,7 +192,7 @@ export default function CardDetail(props: ICardDetailProps) {
                                 return (
                                     <div key={index} className={Styles.tabPane}>
                                         <h3>{iti.title}</h3>
-                                        {iti.description?.length && Array.isArray(iti.description) && <ul>
+                                        {(iti.description?.length !== 0) && Array.isArray(iti.description) && <ul>
                                             {iti.description.map((desc, index) => (
                                                 <li key={index}>{desc}</li>
                                             ))}
@@ -209,10 +209,10 @@ export default function CardDetail(props: ICardDetailProps) {
             <Element name="inclusions" className={Styles.section}>
                 <h2>Inclusions</h2>
                 <ul>
-                    {listing.mealsIncluded?.length && <li>Meals included: {listing.mealsIncluded.map((meal) => meal.toLowerCase()).join(", ")}.</li>}
+                    {(listing.mealsIncluded?.length !== 0) && <li>Meals included: {listing.mealsIncluded.map((meal) => meal.toLowerCase()).join(", ")}.</li>}
                     {listing.travelInsurance && <li>Travel Insurance included in the package.</li>}
                     {listing.visa && <li>Visa to all destinations included.</li>}
-                    {listing.hotels?.length && <li>Hotels included in {listing.hotels.map((hotel, index) => hotel.city.toLowerCase()).join(", ")}.</li>}
+                    {(listing.hotels && listing.hotels?.length !== 0) && <li>Hotels included in {listing.hotels.map((hotel, index) => hotel.city.toLowerCase()).join(", ")}.</li>}
                     {listing.airTickets && <li>Air Tickets are included and will be sent to you.</li>}
                     {listing.tourGuide && <li>A tour guide will accompany you in your destination.</li>}
                     {listing.airPortTransfers && <li>
@@ -227,9 +227,9 @@ export default function CardDetail(props: ICardDetailProps) {
                         }
                     </li>}
                     {
-                       listing.customInclusions?.length && listing.customInclusions.map((inclusion, index) => (
+                        (listing.customInclusions && listing.customInclusions.length !== 0) && listing.customInclusions.map((inclusion, index) => (
                             <li key={index}>{inclusion}</li>
-                        )) 
+                        ))
                     }
                 </ul>
             </Element>
@@ -244,10 +244,10 @@ export default function CardDetail(props: ICardDetailProps) {
                         {!listing.tourGuide && <li>A tour guide will not accompany you in your destination.</li>}
                         {!listing.travelInsurance && <li>Travel Insurance is not included in the package.</li>}
                         {!listing.airPortTransfers && <li>Airport Transfers are not included in the package.</li>}
-                        {!listing.hotels?.length && <li>Hotels are not included in the package.</li>}
-                        {!listing.mealsIncluded?.length && <li>Meals are not included in the package.</li>}
+                        {!(listing.hotels && listing.hotels?.length !== 0) && <li>Hotels are not included in the package.</li>}
+                        {!(listing.mealsIncluded?.length !== 0) && <li>Meals are not included in the package.</li>}
                         {
-                            listing.customExclusions?.length && listing.customExclusions.map((exclusion, index) => (
+                            (listing.customExclusions && listing.customExclusions.length !== 0) && listing.customExclusions.map((exclusion, index) => (
                                 <li key={index}>{exclusion}</li>
                             ))
                         }

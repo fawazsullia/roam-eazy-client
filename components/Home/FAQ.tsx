@@ -45,7 +45,7 @@ const FAQ = (props: { faq?: { question: string; answer: string }[] }) => {
     return (
         <div className={styles.container}>
             <div className={styles.faqContainer}>
-                <h1>FAQs</h1>
+                <h2>FAQs</h2>
                 {faq?.map((faq, index) => (
                     <div key={index} className={styles.test}>
                         <FAQItem

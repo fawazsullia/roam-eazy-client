@@ -49,4 +49,5 @@ export interface IListing {
     termsAndConditions?: string[];
     customExclusions?: string[];
     customInclusions?: string[];
+    logo?: string; // optional company logo
 }

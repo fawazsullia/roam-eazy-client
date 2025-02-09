@@ -71,7 +71,7 @@ const CustomSlick = (props: { topCountries: PlaceWithCount[] }) => {
 
       <div className={styles.sliderdiv}>
         <div className={styles.heading}>
-          <h1>Top Countries</h1>
+          <h2>Top Countries</h2>
         </div>
         <div className={styles.countryGrid}>
           {

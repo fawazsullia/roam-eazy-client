@@ -9,7 +9,7 @@ export default function Roameazy() {
     return (
         <>
             <div className={Styles.container}>
-                <h1 className={Styles.mainHeading}>Why RoamEazy?</h1>
+                <h2 className={Styles.mainHeading}>Why RoamEazy?</h2>
                 <div className={Styles.cardsContainer}>
                     <div className={Styles.card}>
                         <div className={Styles.iconContainer}>

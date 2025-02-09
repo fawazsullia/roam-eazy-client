@@ -22,7 +22,7 @@ const FooterSearch = () => {
     return (
         <div className={styles.container}>
             <div className={styles.searchContainer}>
-                <h1>Join us as Travel Agency</h1>
+                <h2>Join us as Travel Agency</h2>
                 <p>If you are a travel agency then join us here by entering your email address.</p>
                 <Form layout='inline' className={styles.form} form={form}>
                     <div className={styles.formComponents}>

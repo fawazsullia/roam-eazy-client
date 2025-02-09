@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /details/*
+Disallow: /company/*
+
+Sitemap: https://roameazy.com/sitemap.xml

@@ -65,7 +65,7 @@ const Testimonials = () => {
             <div className={styles.overlay}></div>
             <div className={styles.sliderdiv}>
                 <div className={styles.heading}>
-                    <h1>Testimonials</h1>
+                    <h2>Testimonials</h2>
                 </div>
                 <Slider {...settings} className={styles.slider}>
                     {testimonials.map((testimonial, index) => (

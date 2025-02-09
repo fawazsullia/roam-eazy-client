@@ -210,9 +210,9 @@ export default function List(props: IProps) {
             <div className={styles.bgimageDivq}>
               <div >
                 <h3 className={styles.heading}>Travel to {destination}</h3>
-                <p className={styles.pra}>Travel to {destination} with Roameazy and experience the best of {CapitalizeFirstLetters(destination)}. 
-                  We offer a wide range of holiday packages to suit every budget and preference. Whether you're looking for a relaxing beach holiday, a cultural city break, or an adventure-packed trip, we have something for everyone. 
-                  Our packages include flights, accommodation, transfers, and more, so all you have to do is sit back and enjoy your trip. Book your holiday to {destination} with Roameazy today and start planning your dream getaway! 
+                <p className={styles.pra}>Travel to {destination} with Roameazy and experience the best of {CapitalizeFirstLetters(destination)}.
+                  We offer a wide range of holiday packages to suit every budget and preference. Whether you're looking for a relaxing beach holiday, a cultural city break, or an adventure-packed trip, we have something for everyone.
+                  Our packages include flights, accommodation, transfers, and more, so all you have to do is sit back and enjoy your trip. Book your holiday to {destination} with Roameazy today and start planning your dream getaway!
                   <br /><br />
                 </p>
                 {/* <button className={styles.button}>Call to action</button> */}
@@ -296,11 +296,15 @@ export default function List(props: IProps) {
                             <div className={styles.headingDiv}>
                               <h1 className={styles.heading}>{data.title}</h1>
                               <Image
-                                src={cardlogo} className={styles.cardlogoimage} alt="card" />
+                                src={`${Config.imageBaseUrl}?id=${data.logo}`}
+                                className={styles.cardlogoimage} alt="card"
+                                width={100}
+                                height={100}
+                              />
                             </div>
 
-                            <h4 className={styles.subtitle}>Description:</h4>
-                            <p className={styles.pragraph}>{data.description}</p>
+                            {data.overview && <><h4 className={styles.subtitle}>Overview:</h4>
+                              <p className={styles.pragraph}>{data.overview.slice(0, 250)}...</p></>}
                           </div>
                           <div>
                             <p className={styles.subtitle}>Includes:</p>
